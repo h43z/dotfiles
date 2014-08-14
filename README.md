@@ -1,4 +1,3 @@
 dotfiles
 ========
-
-my own dotfiles manageable with https://github.com/jbernard/dotfiles tool.
+Install Vundle -> $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
