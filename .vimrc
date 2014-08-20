@@ -5,7 +5,15 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'Shutnik/jshint2.vim'
 Bundle 'bling/vim-airline'
-""Bundle 'AutoClose'
+"Bundle 'AutoClose'
+
+set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+" Always show statusline
+set laststatus=2
+
+" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+ set t_Co=256
+
 
 set wildmenu
 set laststatus=2 "activate airline
