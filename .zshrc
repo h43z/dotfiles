@@ -2,12 +2,21 @@ HISTFILE=~/.histfile
 HISTSIZE=4000
 SAVEHIST=10000
 setopt autocd
-bindkey -v
 
 #aliases
 alias ls='ls -h --color'
 alias ll='ls -lh --color'
 alias rz='source ~/.zshrc'
+
+#binds
+bindkey -v
+bindkey -M viins '^r' history-incremental-search-backward
+bindkey -M vicmd '^r' history-incremental-search-backward
+bindkey "^W" backward-kill-word    # vi-backward-kill-word
+bindkey "^H" backward-delete-char  # vi-backward-delete-char
+bindkey "^U" kill-line             # vi-kill-line
+bindkey "^?" backward-delete-char  # vi-backward-delete-char
+bindkey '^f' vi-forward-blank-word
 
 #completion
 autoload -U compinit && compinit
@@ -48,3 +57,7 @@ function zle-line-finish {
   vim_mode=$vim_ins_mode
 }
 zle -N zle-line-finish
+
+# syntax-highlighting
+source ~/.zsh/syntax-highlighting/zsh-syntax-highlighting.zsh
+
