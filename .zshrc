@@ -8,6 +8,7 @@ bindkey -v
 alias ls='ls -h --color'
 alias ll='ls -lh --color'
 alias rz='source ~/.zshrc'
+
 #completion
 autoload -U compinit && compinit
 zstyle ':completion:*' menu select
@@ -28,13 +29,13 @@ ret="%{$fg_no_bold[magenta]%}%?%{$reset_color%}"
 ts="%{$fg_no_bold[magenta]%}%*%{$reset_color%}"
 
 PROMPT='$user $host $dir $(git_super_status)
-%# '
-RPROMPT='[$ret|%{$fg[magenta]%}$(battery) %}%{$reset_color%}|$ts|${vim_mode}'
+$vim_mode '
+RPROMPT='$ret %{$fg[magenta]%}$(battery) %}%{$reset_color%} $ts'
 
 #vi-mode
 export KEYTIMEOUT=1
-vim_ins_mode="%{$fg[magenta]%}i%{$reset_color%}]"
-vim_cmd_mode="%{$fg[green]%}c%{$reset_color%}]"
+vim_ins_mode="%%"
+vim_cmd_mode="%{$fg[yellow]%}% (cmd)%{$reset_color%}"
 vim_mode=$vim_ins_mode
 
 function zle-keymap-select {
