@@ -29,5 +29,21 @@ ts="%{$fg_no_bold[magenta]%}%*%{$reset_color%}"
 
 PROMPT='$user $host $dir $(git_super_status)
 %# '
-RPROMPT='[$ret] [%{$fg[magenta]%}$(battery) %}%{$reset_color%}] [$ts]'
+RPROMPT='[$ret|%{$fg[magenta]%}$(battery) %}%{$reset_color%}|$ts|${vim_mode}'
 
+#vi-mode
+export KEYTIMEOUT=1
+vim_ins_mode="%{$fg[magenta]%}i%{$reset_color%}]"
+vim_cmd_mode="%{$fg[green]%}c%{$reset_color%}]"
+vim_mode=$vim_ins_mode
+
+function zle-keymap-select {
+  vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
+  zle reset-prompt
+}
+zle -N zle-keymap-select
+
+function zle-line-finish {
+  vim_mode=$vim_ins_mode
+}
+zle -N zle-line-finish
