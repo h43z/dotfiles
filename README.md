@@ -1,3 +1,6 @@
 dotfiles
 ========
-Install Vundle -> $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+My config files. Just clone and run
+```bash
+./setup.sh
+```
