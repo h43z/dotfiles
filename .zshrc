@@ -13,6 +13,8 @@ autoload -U compinit && compinit
 zstyle ':completion:*' menu select
 
 #prompt
+source ~/.zsh/git-prompt/zshrc.sh
+
 function battery {
  acpi | grep -o "[0-9]*%"
 }
@@ -25,7 +27,7 @@ dir="%{$fg[yellow]%}%~%{$reset_color%}"
 ret="%{$fg_no_bold[magenta]%}%?%{$reset_color%}"
 ts="%{$fg_no_bold[magenta]%}%*%{$reset_color%}"
 
-PROMPT='$user $host $dir 
+PROMPT='$user $host $dir $(git_super_status)
 %# '
 RPROMPT='[$ret] [%{$fg[magenta]%}$(battery) %}%{$reset_color%}] [$ts]'
 

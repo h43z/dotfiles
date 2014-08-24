@@ -2,10 +2,11 @@
 
 ### install vim vundle
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-mkdir -p ~/.vim/undodir
 
-### omz
-#git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+### install git-prompt
+mkdir ~/.zsh/git-prompt/
+git clone https://github.com/olivierverdier/zsh-git-prompt.git ~/.zsh/git-prompt
+
 ### install powerline fonts
 #(cd ~/.fonts && curl -LOs https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf)
 #mkdir -p ~/.config/fontconfig/conf.d/;
@@ -16,3 +17,4 @@ ln -sf $PWD/.vimrc ~/.vimrc
 ln -sf $PWD/.conkyrc ~/.conkyrc
 ln -sf $PWD/.zshrc ~/.zshrc
 
+mkdir -p ~/.vim/undodir
