@@ -4,7 +4,6 @@
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 ### install git-prompt
-mkdir ~/.zsh/git-prompt/
 git clone https://github.com/olivierverdier/zsh-git-prompt.git ~/.zsh/git-prompt
 
 ### install powerline fonts
@@ -18,3 +17,5 @@ ln -sf $PWD/.conkyrc ~/.conkyrc
 ln -sf $PWD/.zshrc ~/.zshrc
 
 mkdir -p ~/.vim/undodir
+
+echo "fin"

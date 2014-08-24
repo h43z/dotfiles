@@ -5,8 +5,8 @@ setopt autocd
 bindkey -v
 
 #aliases
-alias ls='ls -H --color'
-alias ll='ls -lH --color'
+alias ls='ls -h --color'
+alias ll='ls -lh --color'
 alias rz='source ~/.zshrc'
 #completion
 autoload -U compinit && compinit
