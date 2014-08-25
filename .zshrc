@@ -26,7 +26,9 @@ zstyle ':completion:*' menu select
 source ~/.zsh/git-prompt/zshrc.sh
 
 function battery {
- acpi | grep -o "[0-9]*%"
+ if type "acpi" > /dev/null; then
+  acpi | grep -o "[0-9]*%"
+ fi
 }
 
 autoload -U colors && colors
