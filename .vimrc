@@ -5,21 +5,15 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'Shutnik/jshint2.vim'
 Bundle 'bling/vim-airline'
-"Bundle 'AutoClose'
-
-set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
-" Always show statusline
-set laststatus=2
-
-" Use 256 colours (Use this setting only if your terminal supports 256 colours)
- set t_Co=256
-
-
-set wildmenu
-set laststatus=2 "activate airline
-
+"set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+let g:airline#extensions#tabline#enabled = 1
 syntax on
 filetype plugin on
+
+set laststatus=2
+set mouse=a
+set wildmenu
+set laststatus=2 "activate airline
 set incsearch
 set expandtab "replace tab with space
 set tabstop=2
@@ -30,20 +24,16 @@ set ignorecase
 set shiftwidth=2 "for indenting with >> or <<
 set undofile
 set undodir=~/.vim/undodir "make undoes persistent
-
-
 set number
 set relativenumber
 
-"folding
 set foldmethod=syntax
 set foldlevel=99
-let javaScript_fold=1         " JavaScript
-let perl_fold=1               " Perl
-let php_folding=1             " PHP
-let r_syntax_folding=1        " R
-let ruby_fold=1               " Ruby
-let sh_fold_enabled=1         " sh
-let vimsyn_folding='af'       " Vim script
-let xml_syntax_folding=1      " XML
-
+let javaScript_fold=1         
+let perl_fold=1               
+let php_folding=1             
+let r_syntax_folding=1        
+let ruby_fold=1               
+let sh_fold_enabled=1         
+let vimsyn_folding='af'
+let xml_syntax_folding=1

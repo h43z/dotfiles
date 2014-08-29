@@ -3,6 +3,9 @@ HISTSIZE=4000
 SAVEHIST=10000
 setopt autocd
 
+#exports
+export PATH="$PATH:$HOME/projects/go/bin"
+
 #aliases
 alias ls='ls -h --color'
 alias ll='ls -lh --color'
