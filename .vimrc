@@ -11,7 +11,7 @@ syntax on
 filetype plugin on
 
 set laststatus=2
-set mouse=a
+"set mouse=a
 set wildmenu
 set laststatus=2 "activate airline
 set incsearch

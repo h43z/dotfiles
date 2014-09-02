@@ -2,6 +2,7 @@ HISTFILE=~/.histfile
 HISTSIZE=4000
 SAVEHIST=10000
 setopt autocd
+xset r rate 200 60
 
 #exports
 export PATH="$PATH:$HOME/projects/go/bin"
@@ -10,6 +11,10 @@ export PATH="$PATH:$HOME/projects/go/bin"
 alias ls='ls -h --color'
 alias ll='ls -lh --color'
 alias rz='source ~/.zshrc'
+alias upgrade='sudo apt-get update && sudo apt-get upgrade'
+alias di='docker images'
+alias dp='docker ps'
+alias gitc='git commit -a'
 
 #binds
 bindkey -v
