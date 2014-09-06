@@ -13,8 +13,8 @@ alias ll='ls -lh --color'
 alias rz='source ~/.zshrc'
 alias upgrade='sudo apt-get update && sudo apt-get upgrade'
 alias di='docker images'
-alias dp='docker ps'
-alias gitc='git commit -a'
+alias dps='docker ps'
+alias gc='git commit -a'
 
 #binds
 bindkey -v
