@@ -40,6 +40,13 @@ function battery {
  fi
 }
 
+function  container_check(){
+ if [ -f /.dockerinit ]; then
+  container="(container)";
+ fi
+}
+
+container_check()
 autoload -U colors && colors
 setopt promptsubst
 user="%{$fg[cyan]%}%n%{$reset_color%}"
@@ -49,7 +56,7 @@ ret="%{$fg_no_bold[magenta]%}%?%{$reset_color%}"
 ts="%{$fg_no_bold[magenta]%}%*%{$reset_color%}"
 
 PROMPT='$user $host $dir $(git_super_status)
-$container $vim_mode '
+$container$vim_mode '
 RPROMPT='$ret %{$fg[magenta]%}$(battery) %}%{$reset_color%} $ts'
 
 #vi-mode
@@ -72,9 +79,3 @@ zle -N zle-line-finish
 # syntax-highlighting
 source ~/.zsh/syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# check if in docker container
-function  in_docker(){
- if [ -f /.dockerinit ]; then
-    container="(container)";
- fi
-}
