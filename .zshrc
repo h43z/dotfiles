@@ -2,7 +2,9 @@ HISTFILE=~/.histfile
 HISTSIZE=4000
 SAVEHIST=10000
 setopt autocd
-xset r rate 200 60
+if type xset > /dev/null; then
+  xset r rate 200 60
+fi
 
 #exports
 export PATH="$PATH:$HOME/projects/go/bin"
