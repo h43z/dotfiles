@@ -42,11 +42,10 @@ function battery {
 
 function  container_check(){
  if [ -f /.dockerinit ]; then
-  container="(container)";
+  echo "(container) ";
  fi
 }
-
-container_check()
+container=$(container_check)
 autoload -U colors && colors
 setopt promptsubst
 user="%{$fg[cyan]%}%n%{$reset_color%}"
