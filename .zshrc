@@ -20,6 +20,7 @@ alias di='docker images'
 alias dps='docker ps'
 alias gc='git commit -a'
 alias container='docker run -it --rm myubuntu'
+alias tmux="TERM=screen-256color-bce tmux"
 alias tl='tmux list-sessions'
 alias ta='tmux attach -t'
 

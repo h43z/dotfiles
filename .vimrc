@@ -5,9 +5,11 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'bling/vim-airline'
 Bundle 'fugitive.vim'
+Bundle 'edkolev/tmuxline.vim'
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:tmuxline_powerline_separators = 0
 syntax on
 filetype plugin on
 
@@ -30,6 +32,10 @@ set relativenumber
 
 set foldmethod=syntax
 set foldlevel=1
+
+
+cmap w!! w !sudo tee % >/dev/null
+
 let javaScript_fold=1         
 let perl_fold=1               
 let php_folding=1             
