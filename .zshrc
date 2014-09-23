@@ -38,7 +38,9 @@ autoload -U compinit && compinit
 zstyle ':completion:*' menu select
 
 #prompt
+setopt promptsubst
 source ~/.zsh/git-prompt/zshrc.sh
+ZSH_THEME_GIT_PROMPT_NOCACHE="1"
 
 function battery {
  if type "acpi" > /dev/null; then
@@ -53,7 +55,6 @@ function  container_check(){
 }
 container=$(container_check)
 autoload -U colors && colors
-setopt promptsubst
 user="%{$fg[cyan]%}%n%{$reset_color%}"
 host="%{$fg[green]%}%m%{$reset_color%}"
 dir="%{$fg[yellow]%}%~%{$reset_color%}"
