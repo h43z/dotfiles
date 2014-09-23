@@ -8,6 +8,8 @@ fi
 
 #exports
 export PATH="$PATH:$HOME/projects/go/bin"
+export GOPATH=~/projects/go
+
 
 #aliases
 alias ls='ls -h --color'
@@ -18,6 +20,8 @@ alias di='docker images'
 alias dps='docker ps'
 alias gc='git commit -a'
 alias container='docker run -it --rm myubuntu'
+alias tl='tmux list-sessions'
+alias ta='tmux attach -t'
 
 #binds
 bindkey -v

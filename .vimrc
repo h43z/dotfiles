@@ -3,10 +3,11 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-Bundle 'Shutnik/jshint2.vim'
 Bundle 'bling/vim-airline'
-"set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+Bundle 'fugitive.vim'
+
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 syntax on
 filetype plugin on
 
@@ -28,7 +29,7 @@ set number
 set relativenumber
 
 set foldmethod=syntax
-set foldlevel=99
+set foldlevel=1
 let javaScript_fold=1         
 let perl_fold=1               
 let php_folding=1             
