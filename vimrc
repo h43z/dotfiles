@@ -10,6 +10,7 @@ Bundle 'edkolev/tmuxline.vim'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:tmuxline_powerline_separators = 0
+
 syntax on
 filetype plugin on
 
