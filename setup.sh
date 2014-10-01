@@ -1,8 +1,8 @@
 #!/bin/bash
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-git clone https://github.com/olivierverdier/zsh-git-prompt.git ~/.zsh/git-prompt
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim &> /dev/null
+git clone https://github.com/olivierverdier/zsh-git-prompt.git ~/.zsh/git-prompt &> /dev/null
 # remove underline in pathnames manually
-git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/syntax-highlighting
+git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/syntax-highlighting &> /dev/null
 ### install powerline fonts
 mkdir -p ~/.fonts
 (cd ~/.fonts && curl -LOs https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf)

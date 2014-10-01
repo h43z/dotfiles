@@ -7,7 +7,7 @@ if type xset > /dev/null; then
 fi
 
 #exports
-export PATH="$PATH:$HOME/projects/go/bin:/opt/android-studio/sdk/platform-tools"
+export PATH="$PATH:$HOME/projects/go/bin"
 export GOPATH=~/projects/go
 
 
@@ -58,25 +58,8 @@ ret="%{$fg_no_bold[magenta]%}%?%{$reset_color%}"
 ts="%{$fg_no_bold[magenta]%}%*%{$reset_color%}"
 
 PROMPT='$user $host $dir $(git_super_status)
-$container$vim_mode '
+$container%% '
 RPROMPT='$ret %{$fg[magenta]%}$(battery) %}%{$reset_color%} $ts'
-
-#vi-mode
-export KEYTIMEOUT=1
-vim_ins_mode="%%"
-vim_cmd_mode="%{$fg[yellow]%}% (cmd)%{$reset_color%}"
-vim_mode=$vim_ins_mode
-
-function zle-keymap-select {
-  vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
-  zle reset-prompt
-}
-zle -N zle-keymap-select
-
-function zle-line-finish {
-  vim_mode=$vim_ins_mode
-}
-zle -N zle-line-finish
 
 # syntax-highlighting
 source ~/.zsh/syntax-highlighting/zsh-syntax-highlighting.zsh
