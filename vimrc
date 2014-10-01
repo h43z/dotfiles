@@ -31,8 +31,8 @@ set undodir=~/.vim/undodir "make undoes persistent
 set number
 set relativenumber
 
-set foldmethod=syntax
-set foldlevel=1
+set foldmethod=indent
+set foldlevel=99
 
 
 cmap w!! w !sudo tee % >/dev/null

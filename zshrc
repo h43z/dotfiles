@@ -7,7 +7,7 @@ if type xset > /dev/null; then
 fi
 
 #exports
-export PATH="$PATH:$HOME/projects/go/bin"
+export PATH="$PATH:$HOME/projects/go/bin:/opt/android-studio/sdk/platform-tools"
 export GOPATH=~/projects/go
 
 
