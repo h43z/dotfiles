@@ -13,5 +13,7 @@ ln -sf $PWD/vimrc ~/.vimrc
 ln -sf $PWD/conkyrc ~/.conkyrc
 ln -sf $PWD/zshrc ~/.zshrc
 ln -sf $PWD/tmux.conf ~/.tmux.conf
+ln -sf $PWD/terminator.conf ~/.config/terminator/config
+
 mkdir -p ~/.vim/undodir
-echo "dotfiles are ready to go"
+echo "all dotfiles are in place"
