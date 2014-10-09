@@ -13,7 +13,7 @@ let g:tmuxline_powerline_separators = 0
 
 syntax on
 filetype plugin on
-
+set noswapfile
 set laststatus=2
 "set mouse=a
 set wildmenu

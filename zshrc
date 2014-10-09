@@ -7,12 +7,13 @@ if type xset > /dev/null; then
 fi
 
 #exports
-export PATH="$PATH:$HOME/projects/go/bin"
+export PATH="$PATH:$HOME/projects/go/bin:/opt/android-studio/sdk/platform-tools:/opt/vert.x-2.1.2/bin"
 export GOPATH=~/projects/go
 
 
 #aliases
 alias ls='ls -h --color'
+alias cd..='cd ..'
 alias ll='ls -lh --color'
 alias rz='source ~/.zshrc'
 alias upgrade='sudo apt-get update && sudo apt-get upgrade'
