@@ -9,6 +9,7 @@ fi
 #exports
 export PATH="$PATH:$HOME/projects/go/bin:/opt/android-studio/sdk/platform-tools:/opt/vert.x-2.1.2/bin"
 export GOPATH=~/projects/go
+export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 
 
 #aliases
