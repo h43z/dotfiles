@@ -63,6 +63,6 @@ PROMPT='$user $host $dir $(git_super_status)
 $container%% '
 RPROMPT='$ret %{$fg[magenta]%}$(battery) %}%{$reset_color%} $ts'
 
-# syntax-highlighting
+#syntax-highlighting
 source ~/.zsh/syntax-highlighting/zsh-syntax-highlighting.zsh
 
