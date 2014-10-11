@@ -15,22 +15,19 @@ syntax on
 filetype plugin on
 set noswapfile
 set laststatus=2
-"set mouse=a
 set wildmenu
-set laststatus=2 "activate airline
 set incsearch
-set expandtab "replace tab with space
+set expandtab 
 set tabstop=2
-set showmatch "move cursor short to previous matching bracket
-set hlsearch "highlight all matches
-set background= " will make nicer highlights
+set showmatch 
+set hlsearch 
+set background= 
 set ignorecase
-set shiftwidth=2 "for indenting with >> or <<
+set shiftwidth=2 
 set undofile
-set undodir=~/.vim/undodir "make undoes persistent
-set number
+set undodir=~/.vim/undodir 
 set relativenumber
-
+set number
 set foldmethod=indent
 set foldlevel=99
 

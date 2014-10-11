@@ -9,8 +9,7 @@ fi
 #exports
 export PATH="$PATH:$HOME/projects/go/bin:/opt/android-studio/sdk/platform-tools:/opt/vert.x-2.1.2/bin"
 export GOPATH=~/projects/go
-export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
-
+export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist norelativenumber nonu noma' -\""
 
 #aliases
 alias ls='ls -h --color'
@@ -25,6 +24,7 @@ alias container='docker run -it --rm myubuntu'
 alias tmux="TERM=screen-256color-bce tmux"
 alias tl='tmux list-sessions'
 alias ta='tmux attach -t'
+alias vless='vim - -c "set nomod norelativenumber nonu noma"'
 
 #binds
 bindkey -v
