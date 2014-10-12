@@ -14,6 +14,7 @@ export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nore
 #aliases
 alias ls='ls -h --color'
 alias cd..='cd ..'
+alias lookfor="grep -i -R -n --color"
 alias ll='ls -lh --color'
 alias rz='source ~/.zshrc'
 alias upgrade='sudo apt-get update && sudo apt-get upgrade'
@@ -21,8 +22,11 @@ alias di='docker images'
 alias dps='docker ps'
 alias gc='git commit -a'
 alias gp='git push'
+alias gs='git status -sb'
+alias gd='git diff --color-words'
+alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
 alias container='docker run -it --rm myubuntu'
-alias tmux="TERM=screen-256color-bce tmux"
+alias tmux='TERM=screen-256color-bce tmux'
 alias tl='tmux list-sessions'
 alias ta='tmux attach -t'
 alias vless='vim - -c "set nomod norelativenumber nonu noma"'
