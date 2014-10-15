@@ -6,15 +6,31 @@ Bundle 'gmarik/vundle'
 Bundle 'bling/vim-airline'
 Bundle 'fugitive.vim'
 Bundle 'edkolev/tmuxline.vim'
+
+"let mapleader=","
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
 let g:tmuxline_powerline_separators = 0
 
 highlight Pmenu ctermfg=black ctermbg=grey
 highlight PmenuSel ctermfg=black ctermbg=white
 
+"nmap <leader>T :enew<cr>
+"nmap <leader>l :bnext<CR>
+"nmap <leader>h :bprevious<CR>
+"nmap <leader>bq :bp <BAR> bd #<CR>
+
+"Will try this out
+set hidden
+nnoremap  T :enew<cr>
+nnoremap  K :bnext<CR>
+nnoremap  J :bprevious<CR>
+nnoremap  x :bp <BAR> bd #<CR>
+
 syntax on
 filetype plugin indent on
+set dictionary=/usr/share/dict/words
 set noswapfile
 set laststatus=2
 set wildmenu
@@ -33,7 +49,7 @@ set number
 set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
-
+set infercase
 
 cmap w!! w !sudo tee % >/dev/null
 nnoremap <Space> za

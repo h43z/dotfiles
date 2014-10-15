@@ -12,6 +12,7 @@ export GOPATH=~/projects/go
 export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist norelativenumber nonu noma' -\""
 
 #aliases
+alias vimrc='vim ~/.vimrc'
 alias ls='ls -h --color'
 alias cd..='cd ..'
 alias lookfor="grep -i -R -n --color"
