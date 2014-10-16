@@ -26,7 +26,7 @@ set hidden
 nnoremap  T :enew<cr>
 nnoremap  K :bnext<CR>
 nnoremap  J :bprevious<CR>
-nnoremap  x :bp <BAR> bd #<CR>
+nnoremap  x :bp <BAR> bd! #<CR>
 
 syntax on
 filetype plugin indent on
@@ -50,7 +50,8 @@ set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
 set infercase
-
+"cmap run new read !<space> 
+command! -nargs=* -complete=shellcmd R new | setlocal buftype=nofile bufhidden=hide noswapfile | r !<args>
 cmap w!! w !sudo tee % >/dev/null
 nnoremap <Space> za
 "let javaScript_fold=99
