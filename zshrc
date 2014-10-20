@@ -8,7 +8,7 @@ fi
 
 #safety first
 git config --global user.email "notyetset"
-git config --global user.email "notyetset"
+git config --global user.name "notyetset"
 
 #exports
 export PATH="$PATH:$HOME/projects/go/bin:/opt/android-studio/sdk/platform-tools:/opt/vert.x-2.1.2/bin"
