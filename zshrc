@@ -6,6 +6,10 @@ if type xset > /dev/null; then
   xset r rate 200 60
 fi
 
+#safety first
+git config --global user.email "notyetset"
+git config --global user.email "notyetset"
+
 #exports
 export PATH="$PATH:$HOME/projects/go/bin:/opt/android-studio/sdk/platform-tools:/opt/vert.x-2.1.2/bin"
 export GOPATH=~/projects/go
@@ -22,6 +26,7 @@ alias upgrade='sudo apt-get update && sudo apt-get upgrade'
 alias di='docker images'
 alias dps='docker ps'
 alias gc='git commit'
+alias gb='git branch -a'
 alias gp='git push'
 alias gs='git status -sb'
 alias gd='git diff --color-words'

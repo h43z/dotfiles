@@ -7,7 +7,7 @@ Bundle 'bling/vim-airline'
 Bundle 'fugitive.vim'
 Bundle 'edkolev/tmuxline.vim'
 
-"let mapleader=","
+let mapleader=","
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
@@ -26,7 +26,7 @@ set hidden
 nnoremap  T :enew<cr>
 nnoremap  K :bnext<CR>
 nnoremap  J :bprevious<CR>
-nnoremap  x :bp <BAR> bd! #<CR>
+nnoremap  <leader>x :bp <BAR> bd! #<CR>
 
 syntax on
 filetype plugin indent on
