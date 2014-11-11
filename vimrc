@@ -1,11 +1,14 @@
+set nocompatible
+filetype off
 set t_Co=256
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
-Bundle 'bling/vim-airline'
-Bundle 'fugitive.vim'
-Bundle 'edkolev/tmuxline.vim'
+Plugin 'gmarik/vundle'
+Plugin 'bling/vim-airline'
+Plugin 'fugitive.vim'
+Plugin 'Syntastic'
+Plugin 'https://github.com/scrooloose/nerdtree.git'
 
 let mapleader=","
 let g:airline#extensions#tabline#enabled = 1
@@ -16,17 +19,19 @@ let g:tmuxline_powerline_separators = 0
 highlight Pmenu ctermfg=black ctermbg=grey
 highlight PmenuSel ctermfg=black ctermbg=white
 
-"nmap <leader>T :enew<cr>
-"nmap <leader>l :bnext<CR>
-"nmap <leader>h :bprevious<CR>
-"nmap <leader>bq :bp <BAR> bd #<CR>
-
 "Will try this out
 set hidden
 nnoremap  T :enew<cr>
 nnoremap  K :bnext<CR>
 nnoremap  J :bprevious<CR>
 nnoremap  <leader>x :bp <BAR> bd! #<CR>
+
+nnoremap <leader>p :set paste!<CR>
+nmap <leader>n :NERDTreeToggle<CR>
+nmap ; :CtrlPBuffer<CR>
+"imap <Tab> <C-P>
+nmap j gj
+nmap k gk
 
 syntax on
 filetype plugin indent on
@@ -50,7 +55,7 @@ set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
 set infercase
-"cmap run new read !<space> 
+
 command! -nargs=* -complete=shellcmd R new | setlocal buftype=nofile bufhidden=hide noswapfile | r !<args>
 cmap w!! w !sudo tee % >/dev/null
 nnoremap <Space> za
