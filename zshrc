@@ -40,6 +40,8 @@ alias tmux='TERM=screen-256color-bce tmux'
 alias tl='tmux list-sessions'
 alias ta='tmux attach -t'
 alias vless='vim - -c "set nomod norelativenumber nonu noma"'
+alias madison='apt-cache madison'
+alias policy='apt-cache policy'
 
 #binds
 bindkey -v
