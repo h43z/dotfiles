@@ -11,10 +11,14 @@ Plugin 'fugitive.vim'
 Plugin 'Syntastic'
 Plugin 'https://github.com/scrooloose/nerdtree.git'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'mbbill/undotree'
+Plugin 'morhetz/gruvbox'
+Plugin 'MattesGroeger/vim-bookmarks'
 
 syntax on
 filetype plugin indent on
 let mapleader=","
+colorscheme gruvbox
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
@@ -23,24 +27,24 @@ let g:airline_detect_whitespace=0
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
-" GitGutter (beautify design)
-autocmd VimEnter * highlight SignColumn ctermbg=NONE
-autocmd VimEnter * highlight GitGutterAddDefault ctermbg=NONE
-autocmd VimEnter * highlight GitGutterChangeDefault ctermbg=NONE
-autocmd VimEnter * highlight GitGutterDeleteDefault ctermbg=NONE
-
-
 " Normal maps
 nmap <leader>p :set paste!<CR>
 nmap <leader>n :NERDTreeToggle<CR>
-nmap <leader>e  :call ToggleErrors()<CR>
+nmap <leader>e :call ToggleErrors()<CR>
+nmap <leader>u :call UndotreeToggle()<CR>
 nmap  K :bnext!<CR>
 nmap  J :bprevious!<CR>
 nmap  T :enew<cr>
-nmap  <leader>x :bwipeout<CR>
+nmap <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+map  <leader>x :bwipeout<CR>
 
 " Command maps
 cmap w!! w !sudo tee % >/dev/null
+
 
 " Settings
 set dictionary=/usr/share/dict/words
@@ -60,7 +64,16 @@ set undodir=~/.vim/undodir
 set relativenumber
 set number
 set infercase
-set bg=
+set background=dark
+set autoread
+set so=4
+set magic
+set lazyredraw
+set noerrorbells
+set novisualbell
+set clipboard=unnamedplus
+
+autocmd! bufwritepost .vimrc source %
 
 function! ToggleErrors()
     if empty(filter(tabpagebuflist(), 'getbufvar(v:val, "&buftype") is# "quickfix"'))
