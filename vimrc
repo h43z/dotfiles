@@ -17,10 +17,10 @@ Plugin 'sjl/gundo.vim' "undo manager
 Plugin 'morhetz/gruvbox' "retro color scheme
 Plugin 'inside/vim-search-pulse' "pulse effect on searches
 Plugin 'Raimondi/delimitMate' "auto delim closer
-Plugin 'kien/ctrlp.vim' "fuzzy finder
-Plugin 'ryanoasis/vim-webdevicons' "fancy icons
+Plugin 'ctrlpvim/ctrlp.vim' "fuzzy finder
 Plugin 'jceb/vim-orgmode' "emacs orgmode clone
 Plugin 'tpope/vim-speeddating' "increment dates, orgmode needs this
+Plugin 'gregsexton/gitv' "gitk clone
 
 syntax on "enable syntax highlighting
 filetype plugin indent on "load plugin/indent files for specific filetypes
@@ -67,8 +67,8 @@ nmap K :tabnext<CR>
 nmap J :tabprevious<CR>
 
 ""go to next/prev buffer
-nmap bk :bnext<CR>
-nmap bj :bprevious<CR>
+nmap <leader>k :bnext<CR>
+nmap <leader>j :bprevious<CR>
 
 ""navigate multilines without breaks seperatly
 nmap j gj
@@ -86,15 +86,15 @@ nmap <leader>q :bwipeout<CR>
 ""force close a buffer
 nmap <leader>x :bwipeout!<CR>
 
+"" look for ctags
+nmap <leader>t :CtrlPTag<cr>
+
 "command maps
 ""save file even if opened RO
 cmap w!! w !sudo tee % >/dev/null
 
 ""force quit all buffers/tabs and therefore vim
 cmap qq qa!
-
-"insert maps
-imap jj <ESC>
 
 "settings
 set dictionary=/usr/share/dict/words
@@ -104,14 +104,13 @@ set laststatus=2 "always show statusline
 set wildmenu "commandline completion
 set incsearch "show matches while typing
 set expandtab "convert tabs to spaces
-set tabstop=2
-set showmatch "show quickly matchin
-set hlsearch
-set ignorecase
-set shiftwidth=2
-set undofile
+set tabstop=2 "tab == 2 spaces
+set showmatch "show quickly matching closing brackets
+set hlsearch "highlight all search results
+set ignorecase "ignore case in search patterns
+set undofile "persistent undo file
 set undodir=~/.vim/undodir
-set number
+set number "show linenumbers"
 set infercase
 set background=dark
 set autoread
@@ -123,13 +122,21 @@ set showcmd
 set hidden
 set tags+=tags
 
+"Autocmds
+""reload vimrc on save
 autocmd! bufwritepost .vimrc source %
+
+""set groovy filetyp for gradle files
 autocmd BufNewFile,BufRead *.gradle setf groovy
-" trim whitesapces on save
+
+""trim whitesapces on save
 autocmd BufWritePre * %s/\s\+$//e
-" return to previous location of curser on load
+
+""return to previous location of curser on load
 autocmd BufReadPost * normal `"
 
+"functions
+"toggle syntastic errors
 function! ToggleErrors()
     if empty(filter(tabpagebuflist(), 'getbufvar(v:val, "&buftype") is# "quickfix"'))
          Errors
