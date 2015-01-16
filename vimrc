@@ -21,6 +21,8 @@ Plugin 'ctrlpvim/ctrlp.vim' "fuzzy finder
 Plugin 'jceb/vim-orgmode' "emacs orgmode clone
 Plugin 'tpope/vim-speeddating' "increment dates, orgmode needs this
 Plugin 'gregsexton/gitv' "gitk clone
+Plugin 'Valloric/MatchTagAlways' "(html)tag matcher
+Plugin 'Shougo/vinarise.vim' "Hex editor
 
 syntax on "enable syntax highlighting
 filetype plugin indent on "load plugin/indent files for specific filetypes
@@ -45,7 +47,7 @@ let g:vim_search_pulse_mode = 'pattern'
 
 ""ctrlp
 let g:ctrlp_map = '<c-p>'
-
+let g:ctrlp_extensions = ['filer']
 "normal maps
 ""toggle file browser
 nmap <leader>n :NERDTreeToggle<CR>
@@ -105,12 +107,14 @@ set wildmenu "commandline completion
 set incsearch "show matches while typing
 set expandtab "convert tabs to spaces
 set tabstop=2 "tab == 2 spaces
+set shiftwidth=2 "> uses 2 spaces
 set showmatch "show quickly matching closing brackets
 set hlsearch "highlight all search results
 set ignorecase "ignore case in search patterns
 set undofile "persistent undo file
 set undodir=~/.vim/undodir
 set number "show linenumbers"
+set synmaxcol=2048 "check if this makes vim less slow for big files
 set infercase
 set background=dark
 set autoread
@@ -133,7 +137,9 @@ autocmd BufNewFile,BufRead *.gradle setf groovy
 autocmd BufWritePre * %s/\s\+$//e
 
 ""return to previous location of curser on load
-autocmd BufReadPost * normal `"
+"autocmd BufReadPost * normal `"
+" alternative.. test if same problems with git commit sessions
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 "functions
 "toggle syntastic errors
