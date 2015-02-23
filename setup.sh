@@ -13,6 +13,7 @@ ln -sf $PWD/conkyrc ~/.conkyrc
 ln -sf $PWD/zshrc ~/.zshrc
 ln -sf $PWD/tmux.conf ~/.tmux.conf
 
+source ~/.zsh/git-prompt/zshrc.sh
 vim -i NONE -c VundleUpdate -c quitall
 
-echo "all dotfiles are in place"
+echo "All dotfiles are in place"

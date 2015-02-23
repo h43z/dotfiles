@@ -27,6 +27,7 @@ syntax on "enable syntax highlighting
 filetype plugin indent on "load plugin/indent files for specific filetypes
 colorscheme gruvbox
 let mapleader=","
+let g:netrw_browsex_viewer= "google-chrome" "use gx to open url under cursor in browser
 
 "costomized plugin settings
 ""gruvbox colorscheme
