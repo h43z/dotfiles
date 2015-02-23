@@ -3,7 +3,7 @@ set nocompatible
 "vundle
 filetype off
 set t_Co=256
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
 "plugins in use
@@ -18,11 +18,10 @@ Plugin 'morhetz/gruvbox' "retro color scheme
 Plugin 'inside/vim-search-pulse' "pulse effect on searches
 Plugin 'Raimondi/delimitMate' "auto delim closer
 Plugin 'ctrlpvim/ctrlp.vim' "fuzzy finder
-Plugin 'jceb/vim-orgmode' "emacs orgmode clone
-Plugin 'tpope/vim-speeddating' "increment dates, orgmode needs this
 Plugin 'gregsexton/gitv' "gitk clone
 Plugin 'Valloric/MatchTagAlways' "(html)tag matcher
-Plugin 'Shougo/vinarise.vim' "Hex editor
+Plugin 'dietsche/vim-lastplace' "Reopen files where left off
+Plugin 'ryanss/vim-hackernews'
 
 syntax on "enable syntax highlighting
 filetype plugin indent on "load plugin/indent files for specific filetypes
@@ -135,11 +134,6 @@ autocmd BufNewFile,BufRead *.gradle setf groovy
 
 ""trim whitesapces on save
 autocmd BufWritePre * %s/\s\+$//e
-
-""return to previous location of curser on load
-"autocmd BufReadPost * normal `"
-" alternative.. test if same problems with git commit sessions
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 "functions
 "toggle syntastic errors

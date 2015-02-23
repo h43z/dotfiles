@@ -1,7 +1,7 @@
 HISTFILE=~/.histfile
-HISTSIZE=400000
-SAVEHIST=400000
-
+HISTSIZE=4000000
+SAVEHIST=4000000
+autoload -Uz hello
 setopt autocd
 setopt hist_ignore_dups share_history inc_append_history extended_history
 
@@ -17,32 +17,34 @@ vless="vim -R -c 'set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist nore
 
 # exports
 export PATH=$PATH:$HOME/projects/go/bin
-export PATH=$PATH:/home/rich/Android/Sdk/platform-tools
-export PATH=$PATH:/opt/vert.x-2.1.2/bin
-export PATH=$PATH:/sbin
 export PATH=$PATH:~/bin
 export GOPATH=~/projects/go
 export MANPAGER="/bin/sh -c \"col -b | $vless\""
 
 # aliases
-alias vless=$vless
-alias vman='_(){ $@ 2>&1 | vless};_'
-alias vimrc='vim ~/.vimrc'
+## misc
 alias zshrc='vim ~/.zshrc'
-alias ls='ls -h --color'
-alias ll='ls -lh --color'
+alias ls='ls -th --color'
+alias df='df -h'
+alias ll='ls -lth --color'
 alias l='ls -lh --color'
 alias cd..='cd ..'
 alias cd...='cd ../../'
 alias cd....='cd ../../../'
 alias lookfor="grep -i -R -n --color"
 alias rz='source ~/.zshrc'
-alias upgrade='sudo apt update && sudo apt upgrade'
+alias upgrade='sudo apt update && apt list --upgradable && sudo apt upgrade'
+alias grep='egrep --color'
+alias publicip='dig +short myip.opendns.com @resolver1.opendns.com'
+alias mkcd='_(){ mkdir $1 && cd $1};_'
+## docker
+alias container='docker run -it --rm ubuntu bash'
 alias di='docker images'
 alias dps='docker ps'
 alias dic='docker rmi $(docker images -f "dangling=true" -q)'
 alias dcc='docker rm $(docker ps -aq)'
 alias dins='docker inspect'
+## git
 alias gc='git commit -v'
 alias gac='git commit -a -v'
 alias gco='git checkout'
@@ -54,18 +56,23 @@ alias gpull='git pull'
 alias gs='git status -sb'
 alias gd='git diff --color'
 alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
-alias container='docker run -it --rm myubuntu'
+## tmux
 alias tmux='TERM=screen-256color-bce tmux'
 alias tl='tmux list-sessions'
 alias ta='tmux attach -t'
+## vim
+alias vless=$vless
+alias vman='_(){ $@ 2>&1 | vless};_'
+alias vimrc='vim ~/.vimrc'
 alias v='vim -p'
 alias vim='vim -p'
-alias grep='egrep --color'
+## apt
 alias madison='apt-cache madison'
 alias policy='apt-cache policy'
 alias search='_(){apt-cache search $1 | grep $1};_'
 alias pkg='dpkg --get-selections | grep -v deinstall | grep'
-alias mkcd='_(){ mkdir $1 && cd $1};_'
+alias listi='apt list --installed'
+alias listu='apt list --upgradable'
 
 # binds
 bindkey -v
@@ -99,8 +106,8 @@ zstyle ':completion:*' menu select
 setopt promptsubst
 source ~/.zsh/git-prompt/zshrc.sh
 GIT_PROMPT_EXECUTABLE="haskell"
-#ZSH_THEME_GIT_PROMPT_NOCACHE="0"
-ZSH_THEME_GIT_PROMPT_CACHE=1
+ZSH_THEME_GIT_PROMPT_NOCACHE="0"
+#ZSH_THEME_GIT_PROMPT_CACHE=1
 
 function battery {
  if type "acpi" > /dev/null; then

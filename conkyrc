@@ -36,7 +36,8 @@ default_color 656667
 default_shade_color 000000
 default_outline_color 828282
 alignment top_right
-gap_x 12
+#gap_x 12
+gap_x 1300
 gap_y 56
 no_buffers yes
 uppercase no
