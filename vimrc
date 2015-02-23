@@ -7,7 +7,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
 "plugins in use
-Plugin 'gmarik/vundle' "plugin manager
+Plugin 'gmarik/Vundle.vim' "plugin manager
 Plugin 'bling/vim-airline' "fancier statusline
 Plugin 'tpope/vim-fugitive' "git integration
 Plugin 'scrooloose/syntastic' "syntax checking
