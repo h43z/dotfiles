@@ -105,9 +105,10 @@ zstyle ':completion:*' menu select
 # prompt
 setopt promptsubst
 source ~/.zsh/git-prompt/zshrc.sh
-GIT_PROMPT_EXECUTABLE="haskell"
+if [ -n "~/.zsh/git-prompt/dist/build/gitstatus/gitstatus" ]; then
+  GIT_PROMPT_EXECUTABLE="haskell"
+fi
 ZSH_THEME_GIT_PROMPT_NOCACHE="0"
-#ZSH_THEME_GIT_PROMPT_CACHE=1
 
 function battery {
  if type "acpi" > /dev/null; then
