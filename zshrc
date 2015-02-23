@@ -105,8 +105,10 @@ zstyle ':completion:*' menu select
 # prompt
 setopt promptsubst
 source ~/.zsh/git-prompt/zshrc.sh
-if [ -n "~/.zsh/git-prompt/dist/build/gitstatus/gitstatus" ]; then
+if [ -x "$HOME/.zsh/git-prompt/dist/build/gitstatus/gitstatus" ]; then
   GIT_PROMPT_EXECUTABLE="haskell"
+else
+  GIT_PROMPT_EXECUTABLE="python"
 fi
 ZSH_THEME_GIT_PROMPT_NOCACHE="0"
 
