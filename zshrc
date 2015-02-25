@@ -18,6 +18,7 @@ vless="vim -R -c 'set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist nore
 # exports
 export PATH=$PATH:$HOME/projects/go/bin
 export PATH=$PATH:~/bin
+export PATH=$PATH:/sbin
 export GOPATH=~/projects/go
 export MANPAGER="/bin/sh -c \"col -b | $vless\""
 
