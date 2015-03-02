@@ -4,6 +4,7 @@ SAVEHIST=4000000
 autoload -Uz hello
 setopt autocd
 setopt hist_ignore_dups share_history inc_append_history extended_history
+source ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
 
 if type xset > /dev/null; then
   xset r rate 200 60
@@ -19,6 +20,7 @@ vless="vim -R -c 'set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist nore
 export PATH=$PATH:$HOME/projects/go/bin
 export PATH=$PATH:~/bin
 export PATH=$PATH:/sbin
+export PATH=$PATH:/home/rich/Android/Sdk/platform-tools
 export GOPATH=~/projects/go
 export MANPAGER="/bin/sh -c \"col -b | $vless\""
 
@@ -37,9 +39,11 @@ alias rz='source ~/.zshrc'
 alias upgrade='sudo apt update && apt list --upgradable && sudo apt upgrade'
 alias grep='egrep --color'
 alias publicip='dig +short myip.opendns.com @resolver1.opendns.com'
-alias mkcd='_(){ mkdir $1 && cd $1};_'
+alias mkcd='_(){mkdir $1 && cd $1};_'
+alias trash='_(){mv $@ ~/tmp/trash/};_'
+
 ## docker
-alias container='docker run -it --rm ubuntu bash'
+alias container='docker run -it --rm mydebian bash'
 alias di='docker images'
 alias dps='docker ps'
 alias dic='docker rmi $(docker images -f "dangling=true" -q)'
@@ -58,9 +62,11 @@ alias gs='git status -sb'
 alias gd='git diff --color'
 alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
 ## tmux
+alias tmuxconf='vim ~/.tmux.conf'
 alias tmux='TERM=screen-256color-bce tmux'
 alias tl='tmux list-sessions'
 alias ta='tmux attach -t'
+alias tc='tmux new -s'
 ## vim
 alias vless=$vless
 alias vman='_(){ $@ 2>&1 | vless};_'

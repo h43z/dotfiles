@@ -1,6 +1,4 @@
 set nocompatible
-
-"vundle
 filetype off
 set t_Co=256
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -21,11 +19,11 @@ Plugin 'ctrlpvim/ctrlp.vim' "fuzzy finder
 Plugin 'gregsexton/gitv' "gitk clone
 Plugin 'Valloric/MatchTagAlways' "(html)tag matcher
 Plugin 'dietsche/vim-lastplace' "Reopen files where left off
-Plugin 'ryanss/vim-hackernews'
 
 syntax on "enable syntax highlighting
 filetype plugin indent on "load plugin/indent files for specific filetypes
 colorscheme gruvbox
+"hi Normal ctermbg=none
 let mapleader=","
 let g:netrw_browsex_viewer= "google-chrome" "use gx to open url under cursor in browser
 
@@ -51,6 +49,10 @@ let g:ctrlp_extensions = ['filer']
 "normal maps
 ""toggle file browser
 nmap <leader>n :NERDTreeToggle<CR>
+
+""syntastic
+let g:syntastic_error_symbol = '✘'
+let g:syntastic_warning_symbol = "▲"
 
 ""toggle own synstastic error function
 nmap <leader>e :call ToggleErrors()<CR>
