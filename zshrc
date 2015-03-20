@@ -1,26 +1,24 @@
 HISTFILE=~/.histfile
 HISTSIZE=4000000
 SAVEHIST=4000000
-autoload -Uz hello
-setopt autocd
-setopt hist_ignore_dups share_history inc_append_history extended_history
+setopt hist_ignore_dups share_history inc_append_history extended_history correct autocd promptsubst extended_glob
 source ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
 
+# key press repeat setting
 if type xset > /dev/null; then
   xset r rate 200 60
 fi
 
 # safety first
-git config --global user.email "notyetset"
-git config --global user.name "notyetset"
+git config --global user.email "NotYetSet"
+git config --global user.name "NotYetSet"
 
 vless="vim -R -c 'set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma' -"
 
 # exports
-export PATH=$PATH:$HOME/projects/go/bin
-export PATH=$PATH:~/bin
-export PATH=$PATH:/sbin
-export PATH=$PATH:/home/rich/Android/Sdk/platform-tools
+export PATH=$PATH:~/projects/go/bin
+export PATH=$PATH:~/bin:/sbin:/usr/sbin
+export PATH=$PATH:~/Android/Sdk/platform-tools:~/Android/Sdk/tools
 export GOPATH=~/projects/go
 export MANPAGER="/bin/sh -c \"col -b | $vless\""
 
@@ -33,15 +31,19 @@ alias ll='ls -lth --color'
 alias l='ls -lh --color'
 alias cd..='cd ..'
 alias cd...='cd ../../'
-alias cd....='cd ../../../'
-alias lookfor="grep -i -R -n --color"
 alias rz='source ~/.zshrc'
 alias upgrade='sudo apt update && apt list --upgradable && sudo apt upgrade'
-alias grep='egrep --color'
 alias publicip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias mkcd='_(){mkdir $1 && cd $1};_'
 alias trash='_(){mv $@ ~/tmp/trash/};_'
-
+## suffix
+alias -s jpg=viewnior
+alias -s png=viewnior
+## grep/ag
+alias grep='egrep --color'
+alias grepc='grep -n -C 2'
+alias agc='ag -n -C 2'
+alias lookfor="grep -i -R -n --color"
 ## docker
 alias container='docker run -it --rm mydebian bash'
 alias di='docker images'
@@ -66,7 +68,7 @@ alias tmuxconf='vim ~/.tmux.conf'
 alias tmux='TERM=screen-256color-bce tmux'
 alias tl='tmux list-sessions'
 alias ta='tmux attach -t'
-alias tc='tmux new -s'
+#alias tc='tmux new -s'
 ## vim
 alias vless=$vless
 alias vman='_(){ $@ 2>&1 | vless};_'
@@ -80,12 +82,20 @@ alias search='_(){apt-cache search $1 | grep $1};_'
 alias pkg='dpkg --get-selections | grep -v deinstall | grep'
 alias listi='apt list --installed'
 alias listu='apt list --upgradable'
+alias depends='apt-cache depends'
+alias rdepends='apt-cache rdepends --installed'
 
 # binds
 bindkey -v
 bindkey -M vicmd v edit-command-line
 bindkey -M viins '^r' history-incremental-search-backward
 bindkey -M vicmd '^r' history-incremental-search-backward
+
+# very smart completion
+zstyle ':completion:*' matcher-list '' \
+  'm:{a-z\-}={A-Z\_}' \
+  'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
+  'r:[[:ascii:]]||[[:ascii:]]=** r:|=* m:{a-z\-}={A-Z\_}'
 
 # vi mode
 autoload edit-command-line; zle -N edit-command-line
@@ -110,7 +120,6 @@ autoload -U compinit && compinit
 zstyle ':completion:*' menu select
 
 # prompt
-setopt promptsubst
 source ~/.zsh/git-prompt/zshrc.sh
 if [ -x "$HOME/.zsh/git-prompt/dist/build/gitstatus/gitstatus" ]; then
   GIT_PROMPT_EXECUTABLE="haskell"
@@ -146,4 +155,5 @@ RPROMPT='$ret %{$fg[magenta]%}$(battery) %}%{$reset_color%} $ts'
 # syntax-highlighting
 source ~/.zsh/syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
-#ZSH_HIGHLIGHT_PATTERNS+=('rm *' 'bg=red')
+
+
