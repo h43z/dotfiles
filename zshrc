@@ -7,6 +7,7 @@ source ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
 # key press repeat setting
 if type xset > /dev/null; then
   xset r rate 200 60
+  xset mouse 0 0
 fi
 
 # safety first
@@ -36,6 +37,8 @@ alias upgrade='sudo apt update && apt list --upgradable && sudo apt upgrade'
 alias publicip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias mkcd='_(){mkdir $1 && cd $1};_'
 alias trash='_(){mv $@ ~/tmp/trash/};_'
+alias soon='sleep 2 &&'
+alias adbinput='_(){msg="$@" && adb shell input text ${msg// /%s}};_'
 ## suffix
 alias -s jpg=viewnior
 alias -s png=viewnior
@@ -53,6 +56,7 @@ alias dcc='docker rm $(docker ps -aq)'
 alias dins='docker inspect'
 ## git
 alias gc='git commit -v'
+alias gca='git commit -v --amend'
 alias gac='git commit -a -v'
 alias gco='git checkout'
 alias gb='git branch -avv'
@@ -62,13 +66,15 @@ alias gpush='git push'
 alias gpull='git pull'
 alias gs='git status -sb'
 alias gd='git diff --color'
+alias gls='git log --stat'
 alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
 ## tmux
 alias tmuxconf='vim ~/.tmux.conf'
 alias tmux='TERM=screen-256color-bce tmux'
 alias tl='tmux list-sessions'
 alias ta='tmux attach -t'
-#alias tc='tmux new -s'
+alias ts='tmux switch -t'
+alias tn='tmux new -s'
 ## vim
 alias vless=$vless
 alias vman='_(){ $@ 2>&1 | vless};_'
@@ -78,8 +84,9 @@ alias vim='vim -p'
 ## apt
 alias madison='apt-cache madison'
 alias policy='apt-cache policy'
-alias search='_(){apt-cache search $1 | grep $1};_'
-alias pkg='dpkg --get-selections | grep -v deinstall | grep'
+alias search='_(){apt-cache search "$1" | grep $1};_'
+#alias pkg='dpkg --get-selections | grep -v deinstall | grep'
+alias pkg='dpkg -l | tr -s " " | grep'
 alias listi='apt list --installed'
 alias listu='apt list --upgradable'
 alias depends='apt-cache depends'

@@ -19,6 +19,7 @@ Plugin 'ctrlpvim/ctrlp.vim' "fuzzy finder
 Plugin 'gregsexton/gitv' "gitk clone
 Plugin 'Valloric/MatchTagAlways' "(html)tag matcher
 Plugin 'dietsche/vim-lastplace' "Reopen files where left off
+Plugin 'bkad/CamelCaseMotion' "motions for camelcase and undersocore words
 
 syntax on "enable syntax highlighting
 filetype plugin indent on "load plugin/indent files for specific filetypes
@@ -53,7 +54,7 @@ nmap <leader>n :NERDTreeToggle<CR>
 ""syntastic
 let g:syntastic_error_symbol = '✘'
 let g:syntastic_warning_symbol = "▲"
-
+let javaScript_fold=1
 ""toggle own synstastic error function
 nmap <leader>e :call ToggleErrors()<CR>
 
@@ -127,16 +128,24 @@ set clipboard=unnamedplus
 set showcmd
 set hidden
 set tags+=tags
+set foldmethod=syntax
+set foldlevel=99
+set timeoutlen=200
+set mouse=a
 
 "Autocmds
 ""reload vimrc on save
 autocmd! bufwritepost .vimrc source %
 
+""delete trailing spaces on save
+autocmd BufWrite * :call DeleteTrailingWS()
+
 ""set groovy filetyp for gradle files
 autocmd BufNewFile,BufRead *.gradle setf groovy
 
-""trim whitesapces on save
-autocmd BufWritePre * %s/\s\+$//e
+"" restore folding
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview
 
 "functions
 "toggle syntastic errors
@@ -147,3 +156,10 @@ function! ToggleErrors()
         lclose
     endif
 endfunction
+
+""trim whitesapces on save and restore correct position
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
