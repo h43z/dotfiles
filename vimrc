@@ -19,7 +19,8 @@ Plugin 'ctrlpvim/ctrlp.vim' "fuzzy finder
 Plugin 'gregsexton/gitv' "gitk clone
 Plugin 'Valloric/MatchTagAlways' "(html)tag matcher
 Plugin 'dietsche/vim-lastplace' "Reopen files where left off
-Plugin 'bkad/CamelCaseMotion' "motions for camelcase and undersocore words
+"Plugin 'bkad/CamelCaseMotion' "motions for camelcase and undersocore words
+Plugin 'restore_view.vim'
 
 syntax on "enable syntax highlighting
 filetype plugin indent on "load plugin/indent files for specific filetypes
@@ -130,7 +131,7 @@ set hidden
 set tags+=tags
 set foldmethod=syntax
 set foldlevel=99
-set timeoutlen=200
+set timeoutlen=330
 set mouse=a
 
 "Autocmds
@@ -144,8 +145,8 @@ autocmd BufWrite * :call DeleteTrailingWS()
 autocmd BufNewFile,BufRead *.gradle setf groovy
 
 "" restore folding
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview
+"autocmd BufWinLeave *.* mkview
+"autocmd BufWinEnter *.* silent loadview
 
 "functions
 "toggle syntastic errors

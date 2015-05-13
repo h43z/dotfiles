@@ -8,6 +8,7 @@ source ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
 if type xset > /dev/null; then
   xset r rate 200 60
   xset mouse 0 0
+  xset b off
 fi
 
 # safety first
@@ -17,9 +18,14 @@ git config --global user.name "NotYetSet"
 vless="vim -R -c 'set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma' -"
 
 # exports
+export EDITOR=vim
+export PATH=~/.linuxbrew/bin:$PATH
+export MANPATH=$MANPATH:~/.linuxbrew/share/man
+export INFOPATH=$INFOPATH:~/.linuxbrew/share/info
 export PATH=$PATH:~/projects/go/bin
 export PATH=$PATH:~/bin:/sbin:/usr/sbin
 export PATH=$PATH:~/Android/Sdk/platform-tools:~/Android/Sdk/tools
+export PATH=$PATH:~/projects/Nim/bin
 export GOPATH=~/projects/go
 export MANPAGER="/bin/sh -c \"col -b | $vless\""
 
@@ -29,7 +35,7 @@ alias zshrc='vim ~/.zshrc'
 alias ls='ls -th --color'
 alias df='df -h'
 alias ll='ls -lth --color'
-alias l='ls -lh --color'
+alias l='ll'
 alias cd..='cd ..'
 alias cd...='cd ../../'
 alias rz='source ~/.zshrc'
@@ -39,22 +45,30 @@ alias mkcd='_(){mkdir $1 && cd $1};_'
 alias trash='_(){mv $@ ~/tmp/trash/};_'
 alias soon='sleep 2 &&'
 alias adbinput='_(){msg="$@" && adb shell input text ${msg// /%s}};_'
+alias wtf='ping 8.8.8.8'
+alias omg='ping google.com'
+alias re='sudo $(fc -ln -1)'
+alias watch='watch -d -c -t'
+alias j='jobs'
 ## suffix
 alias -s jpg=viewnior
 alias -s png=viewnior
 ## grep/ag
-alias grep='egrep --color'
+alias grep='grep --color'
 alias grepc='grep -n -C 2'
 alias agc='ag -n -C 2'
 alias lookfor="grep -i -R -n --color"
 ## docker
-alias container='docker run -it --rm mydebian bash'
+alias container='docker run -it --rm mydebian'
 alias di='docker images'
 alias dps='docker ps'
 alias dic='docker rmi $(docker images -f "dangling=true" -q)'
-alias dcc='docker rm $(docker ps -aq)'
+alias dcc='docker rm $(docker ps -q --filter status=exited)'
 alias dins='docker inspect'
+alias dih='docker images | head'
 ## git
+alias gnl='git notes list'
+alias gne='git notes edit'
 alias gc='git commit -v'
 alias gca='git commit -v --amend'
 alias gac='git commit -a -v'
@@ -79,12 +93,11 @@ alias tn='tmux new -s'
 alias vless=$vless
 alias vman='_(){ $@ 2>&1 | vless};_'
 alias vimrc='vim ~/.vimrc'
-alias v='vim -p'
-alias vim='vim -p'
+alias v='vim'
 ## apt
 alias madison='apt-cache madison'
 alias policy='apt-cache policy'
-alias search='_(){apt-cache search "$1" | grep $1};_'
+alias search='_(){apt-cache search "$1"};_'
 #alias pkg='dpkg --get-selections | grep -v deinstall | grep'
 alias pkg='dpkg -l | tr -s " " | grep'
 alias listi='apt list --installed'
