@@ -5,7 +5,7 @@ setopt hist_ignore_dups share_history inc_append_history extended_history correc
 source ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
 
 # key press repeat setting
-if type xset > /dev/null; then
+if type xset > /dev/null && [ -n "$DISPLAY" ]; then
   xset r rate 200 60
   xset mouse 0 0
   xset b off
@@ -168,9 +168,9 @@ dir="%{$fg[yellow]%}%~%{$reset_color%}"
 ret="%{$fg_no_bold[magenta]%}%?%{$reset_color%}"
 ts="%{$fg_no_bold[magenta]%}%*%{$reset_color%}"
 
-PROMPT='$user $host $dir $(git_super_status)
+PROMPT='$user at $host in $dir $(git_super_status)
 $container$vim_mode '
-RPROMPT='$ret %{$fg[magenta]%}$(battery) %}%{$reset_color%} $ts'
+RPROMPT='$ret %{$fg[magenta]%}%{$reset_color%}$ts'
 
 # syntax-highlighting
 source ~/.zsh/syntax-highlighting/zsh-syntax-highlighting.zsh

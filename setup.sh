@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo apt-get install -y vim zsh tmux
+sudo apt-get install -y vim-nox zsh tmux
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 git clone https://github.com/olivierverdier/zsh-git-prompt.git ~/.zsh/git-prompt
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/syntax-highlighting
