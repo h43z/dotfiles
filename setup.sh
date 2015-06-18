@@ -16,6 +16,9 @@ ln -sf $PWD/zshrc ~/.zshrc
 ln -sf $PWD/tmux.conf ~/.tmux.conf
 ln -sf $PWD/htoprc ~/.config/htop/htoprc
 
+touch ~/.private.sh
+touch ~/.todo
+
 yes | vim -i NONE -c VundleUpdate -c quitall
 
 echo "All dotfiles are in place"

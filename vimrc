@@ -97,7 +97,7 @@ nmap <leader>t :CtrlPTag<cr>
 
 "command maps
 ""save file even if opened RO
-cmap w!! w !sudo tee % >/dev/null
+cmap www w !sudo tee % >/dev/null
 
 ""force quit all buffers/tabs and therefore vim
 cmap qq qa!

@@ -1,7 +1,10 @@
 HISTFILE=~/.histfile
 HISTSIZE=4000000
 SAVEHIST=4000000
+
 setopt hist_ignore_dups share_history inc_append_history extended_history correct autocd promptsubst extended_glob
+
+source ~/.private.sh
 source ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
 
 # key press repeat setting
@@ -11,12 +14,6 @@ if type xset > /dev/null && [ -n "$DISPLAY" ]; then
   xset b off
 fi
 
-# safety first
-git config --global user.email "NotYetSet"
-git config --global user.name "NotYetSet"
-
-vless="vim -R -c 'set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma' -"
-
 # exports
 export EDITOR=vim
 export PATH=~/.linuxbrew/bin:$PATH
@@ -24,9 +21,9 @@ export MANPATH=$MANPATH:~/.linuxbrew/share/man
 export INFOPATH=$INFOPATH:~/.linuxbrew/share/info
 export PATH=$PATH:~/projects/go/bin
 export PATH=$PATH:~/bin:/sbin:/usr/sbin
-export PATH=$PATH:~/Android/Sdk/platform-tools:~/Android/Sdk/tools
-export PATH=$PATH:~/projects/Nim/bin
 export GOPATH=~/projects/go
+
+vless="vim -R -c 'set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma' -c 'normal L' -"
 export MANPAGER="/bin/sh -c \"col -b | $vless\""
 
 # aliases
@@ -48,8 +45,11 @@ alias adbinput='_(){msg="$@" && adb shell input text ${msg// /%s}};_'
 alias wtf='ping 8.8.8.8'
 alias omg='ping google.com'
 alias re='sudo $(fc -ln -1)'
-alias watch='watch -d -c -t'
+alias watch='watch -d -c'
 alias j='jobs'
+alias todo='vim ~/.todo'
+alias ducks='du -cks -h * | sort -rh | head'
+alias bsi='r=$RANDOM;echo "#!/bin/bash\n" > script_$r.sh && chmod +x script_$r.sh && vim script_$r.sh'
 ## suffix
 alias -s jpg=viewnior
 alias -s png=viewnior
@@ -66,6 +66,7 @@ alias dic='docker rmi $(docker images -f "dangling=true" -q)'
 alias dcc='docker rm $(docker ps -q --filter status=exited)'
 alias dins='docker inspect'
 alias dih='docker images | head'
+alias ds='docker ps | grep -v NAMES | awk "{ print \$NF }" | tr "\n" " " | xargs docker stats'
 ## git
 alias gnl='git notes list'
 alias gne='git notes edit'
@@ -90,20 +91,25 @@ alias ta='tmux attach -t'
 alias ts='tmux switch -t'
 alias tn='tmux new -s'
 ## vim
-alias vless=$vless
+alias v='vim'
 alias vman='_(){ $@ 2>&1 | vless};_'
 alias vimrc='vim ~/.vimrc'
-alias v='vim'
 ## apt
 alias madison='apt-cache madison'
 alias policy='apt-cache policy'
-alias search='_(){apt-cache search "$1"};_'
+alias search='apt-cache search'
+alias install='_(){apt-get install "$1"};_'
 #alias pkg='dpkg --get-selections | grep -v deinstall | grep'
 alias pkg='dpkg -l | tr -s " " | grep'
 alias listi='apt list --installed'
 alias listu='apt list --upgradable'
 alias depends='apt-cache depends'
 alias rdepends='apt-cache rdepends --installed'
+
+
+# Anon first
+git config --global user.email "NotYetSet"
+git config --global user.name "NotYetSet"
 
 # binds
 bindkey -v
@@ -165,15 +171,12 @@ autoload -U colors && colors
 user="%{$fg[cyan]%}%n%{$reset_color%}"
 host="%{$fg[green]%}%m%{$reset_color%}"
 dir="%{$fg[yellow]%}%~%{$reset_color%}"
-ret="%{$fg_no_bold[magenta]%}%?%{$reset_color%}"
-ts="%{$fg_no_bold[magenta]%}%*%{$reset_color%}"
+ret="%{$fg[white]%}%?%{$reset_color%}"
 
 PROMPT='$user at $host in $dir $(git_super_status)
 $container$vim_mode '
-RPROMPT='$ret %{$fg[magenta]%}%{$reset_color%}$ts'
+RPROMPT='$ret'
 
 # syntax-highlighting
 source ~/.zsh/syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
-
-
