@@ -16,10 +16,8 @@ Plugin 'morhetz/gruvbox' "retro color scheme
 Plugin 'inside/vim-search-pulse' "pulse effect on searches
 Plugin 'Raimondi/delimitMate' "auto delim closer
 Plugin 'ctrlpvim/ctrlp.vim' "fuzzy finder
-Plugin 'gregsexton/gitv' "gitk clone
 Plugin 'Valloric/MatchTagAlways' "(html)tag matcher
 Plugin 'dietsche/vim-lastplace' "Reopen files where left off
-"Plugin 'bkad/CamelCaseMotion' "motions for camelcase and undersocore words
 Plugin 'restore_view.vim'
 
 syntax on "enable syntax highlighting

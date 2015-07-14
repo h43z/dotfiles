@@ -1,6 +1,8 @@
 HISTFILE=~/.histfile
 HISTSIZE=4000000
 SAVEHIST=4000000
+REPORTTIME=5
+TIMEFMT="$fg[blue]%E$reset_color real $fg[blue]%U$reset_color user $fg[blue]%S$reset_color system $fg[blue]%P$reset_color"
 
 setopt hist_ignore_dups share_history inc_append_history extended_history correct autocd promptsubst extended_glob
 
@@ -59,6 +61,7 @@ alias grepc='grep -n -C 2'
 alias agc='ag -n -C 2'
 alias lookfor="grep -i -R -n --color"
 ## docker
+alias d='docker'
 alias container='docker run -it --rm mydebian'
 alias di='docker images'
 alias dps='docker ps'
@@ -92,13 +95,13 @@ alias ts='tmux switch -t'
 alias tn='tmux new -s'
 ## vim
 alias v='vim'
-alias vman='_(){ $@ 2>&1 | vless};_'
+alias vman='_(){$@ 2>&1 | vim - };_'
 alias vimrc='vim ~/.vimrc'
 ## apt
 alias madison='apt-cache madison'
 alias policy='apt-cache policy'
-alias search='apt-cache search'
-alias install='_(){apt-get install "$1"};_'
+alias search='apt-cache search --names-only'
+alias install='apt-get install'
 #alias pkg='dpkg --get-selections | grep -v deinstall | grep'
 alias pkg='dpkg -l | tr -s " " | grep'
 alias listi='apt list --installed'
@@ -146,13 +149,13 @@ autoload -U compinit && compinit
 zstyle ':completion:*' menu select
 
 # prompt
-source ~/.zsh/git-prompt/zshrc.sh
 if [ -x "$HOME/.zsh/git-prompt/dist/build/gitstatus/gitstatus" ]; then
   GIT_PROMPT_EXECUTABLE="haskell"
 else
   GIT_PROMPT_EXECUTABLE="python"
 fi
 ZSH_THEME_GIT_PROMPT_NOCACHE="0"
+source ~/.zsh/git-prompt/zshrc.sh
 
 function battery {
  if type "acpi" > /dev/null; then
