@@ -15,6 +15,7 @@ ln -sf $PWD/zshrc ~/.zshrc
 ln -sf $PWD/tmux.conf ~/.tmux.conf
 ln -sf $PWD/htoprc ~/.config/htop/htoprc
 ln -sf $PWD/openbox ~/.config/openbox
+ln -sf $PWD/i3 ~/.i3
 
 touch ~/.private.sh
 touch ~/.todo
