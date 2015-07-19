@@ -8,16 +8,16 @@ mkdir -p ~/.config/terminator/
 mkdir -p ~/.config/htop/
 mkdir -p ~/.vim/undodir
 
-ln -sf $PWD/vimrc ~/.vimrc
-ln -sf $PWD/vimrc ~/.nvimrc
-ln -sf $PWD/terminator.conf ~/.config/terminator/config
-ln -sf $PWD/zshrc ~/.zshrc
-ln -sf $PWD/tmux.conf ~/.tmux.conf
-ln -sf $PWD/htoprc ~/.config/htop/htoprc
-ln -sf $PWD/openbox ~/.config/openbox
-ln -sf $PWD/i3 ~/.i3
-ln -sf $PWD/xinitrc ~/.xinitrc
-ln -sf $PWD/Xresources ~/.Xresources
+ln -sfn $PWD/vimrc ~/.vimrc
+ln -sfn $PWD/vimrc ~/.nvimrc
+ln -sfn $PWD/terminator.conf ~/.config/terminator/config
+ln -sfn $PWD/zshrc ~/.zshrc
+ln -sfn $PWD/tmux.conf ~/.tmux.conf
+ln -sfn $PWD/htoprc ~/.config/htop/htoprc
+ln -sfn $PWD/openbox ~/.config/openbox
+ln -sfn $PWD/i3 ~/.i3
+ln -sfn $PWD/xinitrc ~/.xinitrc
+ln -sfn $PWD/Xresources ~/.Xresources
 
 touch ~/.private.sh
 touch ~/.todo

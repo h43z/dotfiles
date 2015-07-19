@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu xmlns="http://openbox.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org/                 file:///usr/share/openbox/menu.xsd">
+	<menu id="root-menu" label="Openbox 3">
+		<item label="run">
+			<action name="Execute">
+				<command>
+				  rofi -show run
+				</command>
+			</action>
+		</item>
+		<item label="web">
+			<action name="Execute">
+				<command>
+				  google-chrome-stable
+				</command>
+				<execute/>
+			</action>
+		</item>
+		<item label="file">
+			<action name="Execute">
+				<command>
+					thunar
+				</command>
+			</action>
+		</item>
+		<item label="lock">
+			<action name="Execute">
+				<command>
+					cb-lock
+				</command>
+			</action>
+		</item>
+		<item label="exit">
+			<action name="Execute">
+				<command>
+					cb-exit
+				</command>
+			</action>
+		</item>
+	</menu>
+</openbox_menu>
