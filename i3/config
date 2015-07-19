@@ -1,14 +1,18 @@
 set $mod Mod4
 set $alt Mod1
 
+gaps inner 10
+gaps outer 5
+mouse_warping none
+
 font pango:monospace 8
 floating_modifier $mod
 bindsym $mod+t exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
-bindsym $mod+p exec "rofi -show window"
-bindsym $alt+space exec "rofi -show run"
-bindsym $alt+w exec "x-www-browser"
-bindsym $alt+f exec "thunar"
+bindsym $mod+p exec --no-startup-id "rofi -show window"
+bindsym $alt+space exec --no-startup-id "rofi -show run"
+bindsym $alt+w exec --no-startup-id "x-www-browser"
+bindsym $alt+f exec --no-startup-id "thunar"
 
 # Hide borders on the edge of the screen
 hide_edge_borders both
@@ -40,7 +44,7 @@ bindsym $mod+Shift+Right move right
 # split in horizontal orientation
 #bindsym $mod+h split h
 
-# split in vertical orientation
+# vertical split
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
@@ -86,8 +90,9 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 bar {
-  separator_symbol " • "
+  separator_symbol "  "
   status_command i3status --config ~/.i3/i3status.conf
+  #status_command i3blocks
 }
 
 bindsym XF86AudioMute exec amixer set Master toggle
@@ -103,10 +108,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Session startup
-exec --no-startup-id nitrogen --restore
-exec --no-startup-id xscreensaver -no-splash &
-exec --no-startup-id xset r rate 250 25 &
-exec --no-startup-id redshift -l 47:12 -r -t 6500:4500 &
 
 # window placment
 for_window [class="Thunar"] floating enable
+for_window [class="^.*"] border pixel 3

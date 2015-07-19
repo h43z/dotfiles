@@ -9,13 +9,6 @@ setopt hist_ignore_dups share_history inc_append_history extended_history correc
 source ~/.private.sh
 source ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
 
-# key press repeat setting
-if type xset > /dev/null && [ -n "$DISPLAY" ]; then
-  xset r rate 200 60
-  xset mouse 0 0
-  xset b off
-fi
-
 # exports
 export EDITOR=vim
 export PATH=~/.linuxbrew/bin:$PATH
@@ -148,28 +141,16 @@ zle -N zle-line-finish
 autoload -U compinit && compinit
 zstyle ':completion:*' menu select
 
-# prompt
 if [ -x "$HOME/.zsh/git-prompt/dist/build/gitstatus/gitstatus" ]; then
   GIT_PROMPT_EXECUTABLE="haskell"
 else
   GIT_PROMPT_EXECUTABLE="python"
 fi
+
+
 ZSH_THEME_GIT_PROMPT_NOCACHE="0"
 source ~/.zsh/git-prompt/zshrc.sh
 
-function battery {
- if type "acpi" > /dev/null; then
-  acpi | grep -o "[0-9]*%"
- fi
-}
-
-function  container_check(){
- if [ -f /.dockerinit ]; then
-  echo "(container) ";
- fi
-}
-
-container=$(container_check)
 autoload -U colors && colors
 user="%{$fg[cyan]%}%n%{$reset_color%}"
 host="%{$fg[green]%}%m%{$reset_color%}"
@@ -177,9 +158,10 @@ dir="%{$fg[yellow]%}%~%{$reset_color%}"
 ret="%{$fg[white]%}%?%{$reset_color%}"
 
 PROMPT='$user at $host in $dir $(git_super_status)
-$container$vim_mode '
+%% '
 RPROMPT='$ret'
 
 # syntax-highlighting
-source ~/.zsh/syntax-highlighting/zsh-syntax-highlighting.zsh
+# do I really need this?
+#source ~/.zsh/syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
