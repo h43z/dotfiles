@@ -1,7 +1,7 @@
 #!/bin/bssh
 xrdb ~/.Xresources
-
-xset r rate 250 25
+eval $(ssh-agent)
+xset r rate 200 60
 xset mouse 0 0
 xset b off
 

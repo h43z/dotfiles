@@ -91,13 +91,13 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 bar {
   separator_symbol "  "
-  status_command i3status --config ~/.i3/i3status.conf
-  #status_command i3blocks
+  #status_command i3status --config ~/.i3/i3status.conf
+  status_command i3blocks -c ~/.i3/i3blocks.conf
 }
 
-bindsym XF86AudioMute exec amixer set Master toggle
-bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
-bindsym XF86AudioLowerVolume exec amixer set Master 5%-
+bindsym XF86AudioMute exec amixer set Master toggle && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec amixer set Master 5%- && pkill -RTMIN+1 i3blocks
 
 # $mod+rightclick)
 mode "resize" {

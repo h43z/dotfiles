@@ -1,5 +1,4 @@
 ## GNOME PolicyKit and Keyring
-eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 tint2 &
 xfce4-volumed &
 volti &
