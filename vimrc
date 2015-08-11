@@ -5,20 +5,17 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
 "plugins in use
+"Plugin 'Valloric/YouCompleteMe' "Code-completion engine
 Plugin 'gmarik/Vundle.vim' "plugin manager
 Plugin 'bling/vim-airline' "fancier statusline
 Plugin 'tpope/vim-fugitive' "git integration
 Plugin 'scrooloose/syntastic' "syntax checking
-Plugin 'scrooloose/nerdtree' "file browser
-Plugin 'airblade/vim-gitgutter' "git status indicator column
 Plugin 'sjl/gundo.vim' "undo manager
 Plugin 'morhetz/gruvbox' "retro color scheme
-Plugin 'inside/vim-search-pulse' "pulse effect on searches
 Plugin 'Raimondi/delimitMate' "auto delim closer
 Plugin 'ctrlpvim/ctrlp.vim' "fuzzy finder
 Plugin 'Valloric/MatchTagAlways' "(html)tag matcher
 Plugin 'dietsche/vim-lastplace' "Reopen files where left off
-Plugin 'restore_view.vim'
 
 syntax on "enable syntax highlighting
 filetype plugin indent on "load plugin/indent files for specific filetypes
@@ -27,9 +24,11 @@ colorscheme gruvbox
 let mapleader=","
 let g:netrw_browsex_viewer= "google-chrome" "use gx to open url under cursor in browser
 
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+
 "costomized plugin settings
 ""gruvbox colorscheme
-let g:gruvbox_sign_column = 'dark0'
+"let g:gruvbox_sign_column = 'dark0'
 
 ""vim-airline
 let g:airline#extensions#tabline#enabled = 1
@@ -40,16 +39,11 @@ let g:airline_right_sep=''
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
 
-""vim-search-pulse
-let g:vim_search_pulse_mode = 'pattern'
-
 ""ctrlp
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_extensions = ['filer']
+set wildignore+=*/remotedata/*,*.so,*.swp,*.zip     " MacOSX/Linux
 "normal maps
-""toggle file browser
-nmap <leader>n :NERDTreeToggle<CR>
-
 ""syntastic
 let g:syntastic_error_symbol = '✘'
 let g:syntastic_warning_symbol = "▲"
