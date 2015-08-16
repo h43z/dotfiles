@@ -1,30 +1,22 @@
-set nocompatible
-filetype off
-set t_Co=256
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#rc()
-
+call plug#begin('~/.vim/bundle')
 "plugins in use
-"Plugin 'Valloric/YouCompleteMe' "Code-completion engine
-Plugin 'gmarik/Vundle.vim' "plugin manager
-Plugin 'bling/vim-airline' "fancier statusline
-Plugin 'tpope/vim-fugitive' "git integration
-Plugin 'scrooloose/syntastic' "syntax checking
-Plugin 'sjl/gundo.vim' "undo manager
-Plugin 'morhetz/gruvbox' "retro color scheme
-Plugin 'Raimondi/delimitMate' "auto delim closer
-Plugin 'ctrlpvim/ctrlp.vim' "fuzzy finder
-Plugin 'Valloric/MatchTagAlways' "(html)tag matcher
-Plugin 'dietsche/vim-lastplace' "Reopen files where left off
+Plug 'Valloric/YouCompleteMe', {'do': './install.sh','for': ['python','cpp']} "Code-completion engine
+autocmd! User YouCompleteMe call youcompleteme#Enable()
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'bling/vim-airline' "fancier statusline
+Plug 'tpope/vim-fugitive' "git integration
+Plug 'scrooloose/syntastic' "syntax checking
+Plug 'sjl/gundo.vim' "undo manager
+Plug 'morhetz/gruvbox' "retro color scheme
+Plug 'Raimondi/delimitMate' "auto delim closer
+Plug 'ctrlpvim/ctrlp.vim' "fuzzy finder
+Plug 'Valloric/MatchTagAlways', {'for': ['html']} "(html)tag matcher
+Plug 'dietsche/vim-lastplace' "Reopen files where left off
+call plug#end()
 
-syntax on "enable syntax highlighting
-filetype plugin indent on "load plugin/indent files for specific filetypes
-colorscheme gruvbox
-"hi Normal ctermbg=none
 let mapleader=","
+colorscheme gruvbox
 let g:netrw_browsex_viewer= "google-chrome" "use gx to open url under cursor in browser
-
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 "costomized plugin settings
 ""gruvbox colorscheme
@@ -39,10 +31,14 @@ let g:airline_right_sep=''
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
 
+""ycm
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
 ""ctrlp
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_extensions = ['filer']
-set wildignore+=*/remotedata/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*/remotedata/*,*.so,*.swp,*.zip
+
 "normal maps
 ""syntastic
 let g:syntastic_error_symbol = '✘'
@@ -53,6 +49,9 @@ nmap <leader>e :call ToggleErrors()<CR>
 
 ""toggle undo manager tree
 nmap <leader>u :GundoToggle<CR>
+
+""toggle nerdtree
+nmap <leader>n :NERDTreeToggle<CR>
 
 ""make current window the only one on screen
 nmap <leader>o :only<CR>

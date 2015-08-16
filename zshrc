@@ -4,25 +4,30 @@ SAVEHIST=4000000
 REPORTTIME=5
 TIMEFMT="$fg[blue]%E$reset_color real $fg[blue]%U$reset_color user $fg[blue]%S$reset_color system $fg[blue]%P$reset_color"
 
-setopt hist_ignore_dups share_history inc_append_history extended_history correct autocd promptsubst extended_glob
+setopt hist_ignore_dups
+setopt share_history
+setopt inc_append_history
+setopt extended_history
+setopt correct autocd
+setopt promptsubst
+setopt extended_glob
+setopt bang_hist
+unsetopt rm_star_silent
 
 source ~/.private.sh
 source ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
 
 # exports
 export EDITOR=vim
-export PATH=~/.linuxbrew/bin:$PATH
-export MANPATH=$MANPATH:~/.linuxbrew/share/man
-export INFOPATH=$INFOPATH:~/.linuxbrew/share/info
 export PATH=$PATH:~/projects/go/bin
 export PATH=$PATH:~/bin:/sbin:/usr/sbin
 export GOPATH=~/projects/go
 
-vless="vim -R -c 'set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma' -c 'normal L' -"
-export MANPAGER="/bin/sh -c \"col -b | $vless\""
+export MANPAGER='/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
 
 # aliases
 ## misc
+alias vim=vim
 alias zshrc='vim ~/.zshrc'
 alias ls='ls -th --color'
 alias df='df -h'
@@ -31,7 +36,6 @@ alias l='ll'
 alias cd..='cd ..'
 alias cd...='cd ../../'
 alias rz='source ~/.zshrc'
-alias upgrade='sudo apt update && apt list --upgradable && sudo apt upgrade'
 alias publicip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias mkcd='_(){mkdir $1 && cd $1};_'
 alias trash='_(){mv $@ ~/tmp/trash/};_'
@@ -44,7 +48,9 @@ alias watch='watch -d -c'
 alias j='jobs'
 alias todo='vim ~/.todo'
 alias ducks='du -cks -h * | sort -rh | head'
-alias bsi='r=$RANDOM;echo "#!/bin/bash\n" > script_$r.sh && chmod +x script_$r.sh && vim script_$r.sh'
+alias testscript='r=$RANDOM;echo "#!/bin/bash\n" > script_$r.sh && chmod +x script_$r.sh && vim script_$r.sh'
+alias topcmd='history 0 | awk '\''{ cmd[$2]++; count++; } END { for(a in cmd)printf "%d %0.1f%%  %s\n", cmd[a], cmd[a]/count*100, a}'\'' | sort -nr | head | nl -w1 | column -t'
+
 ## suffix
 alias -s jpg=viewnior
 alias -s png=viewnior
@@ -79,6 +85,7 @@ alias gs='git status -sb'
 alias gd='git diff --color'
 alias gls='git log --stat'
 alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
+alias gdl='git diff "HEAD^" HEAD'
 ## tmux
 alias tmuxconf='vim ~/.tmux.conf'
 alias tmux='TERM=screen-256color-bce tmux'
@@ -91,10 +98,11 @@ alias v='vim'
 alias vman='_(){$@ 2>&1 | vim - };_'
 alias vimrc='vim ~/.vimrc'
 ## apt
+alias install='sudo apt-get install'
+alias upgrade='sudo apt update && apt list --upgradable && sudo apt upgrade'
 alias madison='apt-cache madison'
 alias policy='apt-cache policy'
 alias search='apt-cache search --names-only'
-alias install='apt-get install'
 #alias pkg='dpkg --get-selections | grep -v deinstall | grep'
 alias pkg='dpkg -l | tr -s " " | grep'
 alias listi='apt list --installed'
@@ -113,11 +121,7 @@ bindkey -M vicmd v edit-command-line
 bindkey -M viins '^r' history-incremental-search-backward
 bindkey -M vicmd '^r' history-incremental-search-backward
 
-# very smart completion
-zstyle ':completion:*' matcher-list '' \
-  'm:{a-z\-}={A-Z\_}' \
-  'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
-  'r:[[:ascii:]]||[[:ascii:]]=** r:|=* m:{a-z\-}={A-Z\_}'
+zle_highlight=(isearch:fg=blue)
 
 # vi mode
 autoload edit-command-line; zle -N edit-command-line
@@ -140,6 +144,13 @@ zle -N zle-line-finish
 # completion
 autoload -U compinit && compinit
 zstyle ':completion:*' menu select
+# very smart completion
+zstyle ':completion:*' matcher-list '' \
+  'm:{a-z\-}={A-Z\_}' \
+  'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
+  'r:[[:ascii:]]||[[:ascii:]]=** r:|=* m:{a-z\-}={A-Z\_}'
+
+
 
 if [ -x "$HOME/.zsh/git-prompt/dist/build/gitstatus/gitstatus" ]; then
   GIT_PROMPT_EXECUTABLE="haskell"
@@ -161,7 +172,5 @@ PROMPT='$user at $host in $dir $(git_super_status)
 %% '
 RPROMPT='$ret'
 
-# syntax-highlighting
-# do I really need this?
-#source ~/.zsh/syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)

@@ -36,6 +36,9 @@ URxvt.matcher.button: 1
 URxvt.letterSpace: -2
 URxvt.internalBorder: 8
 URxvt.font: xft:DejaVu Sans Mono for Powerline:size=15
+URxvt.scrollTtyOutput: false
+URxvt.scrollWithBuffer: true
+URxvt.scrollTtyKeypress: true
 
 ! colorscheme gruvbox ------------------------------------------------------
  hard contrast: *background: #1d2021
