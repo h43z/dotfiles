@@ -14,8 +14,8 @@ setopt extended_glob
 setopt bang_hist
 unsetopt rm_star_silent
 
-source ~/.private.sh
-source ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
+[ -f ~/.private.sh ] && source ~/.private.sh
+[ -f ~/.vim/bundle/gruvbox/gruvbox_256palette.sh ] && source ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
 
 # exports
 export EDITOR=vim

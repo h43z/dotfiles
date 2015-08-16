@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/bundle')
 "plugins in use
-Plug 'Valloric/YouCompleteMe', {'do': './install.sh','for': ['python','cpp']} "Code-completion engine
+Plug 'Valloric/YouCompleteMe', {'do': 'test -n \"$DISPLAY\" && ./install.sh','for': ['python','cpp']} "Code-completion engine
 autocmd! User YouCompleteMe call youcompleteme#Enable()
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'bling/vim-airline' "fancier statusline

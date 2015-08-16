@@ -23,6 +23,6 @@ ln -sfn $PWD/Xresources ~/.Xresources
 touch ~/.private.sh
 touch ~/.todo
 
-vim -u NONE -c PlugInstall -c quitall
+vim -c PlugUpdate -c quitall
 
 echo "All dotfiles are in place"

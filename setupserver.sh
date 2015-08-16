@@ -15,6 +15,6 @@ ln -sfn $PWD/htoprc ~/.config/htop/htoprc
 
 touch ~/.todo
 
-yes | vim -u NONE -c PlugInstall -c quitall
+yes | vim -c PlugUpdate -c quitall
 
 echo "All dotfiles are in place"
