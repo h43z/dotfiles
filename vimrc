@@ -12,6 +12,12 @@ Plug 'Raimondi/delimitMate' "auto delim closer
 Plug 'ctrlpvim/ctrlp.vim' "fuzzy finder
 Plug 'Valloric/MatchTagAlways', {'for': ['html']} "(html)tag matcher
 Plug 'dietsche/vim-lastplace' "Reopen files where left off
+"Plug 'henrik/vim-indexed-search' "show match indicator
+Plug 'rking/ag.vim' "ag interface
+"Plug 'inside/vim-search-pulse' "pulse search match
+Plug 'elzr/vim-json'
+runtime! ftplugin/man.vim
+
 call plug#end()
 
 let mapleader=","
@@ -105,7 +111,6 @@ set tabstop=2 "tab == 2 spaces
 set shiftwidth=2 "> uses 2 spaces
 set showmatch "show quickly matching closing brackets
 set hlsearch "highlight all search results
-set ignorecase "ignore case in search patterns
 set undofile "persistent undo file
 set undodir=~/.vim/undodir
 set number "show linenumbers"
@@ -117,7 +122,6 @@ set magic
 set noerrorbells
 set novisualbell
 set clipboard=unnamedplus
-set showcmd
 set hidden
 set tags+=tags
 set foldmethod=syntax
@@ -150,8 +154,17 @@ function! ToggleErrors()
 endfunction
 
 ""trim whitesapces on save and restore correct position
-func! DeleteTrailingWS()
+function! DeleteTrailingWS()
   exe "normal mz"
   %s/\s\+$//ge
   exe "normal `z"
-endfunc
+endfunction
+
+function! HtmlPrettify()
+  execute "%!tidy -q -i --show-errors 0"
+endfunction
+
+function! JsonPrettify()
+  execute "%!python -m json.tool"
+endfunction
+

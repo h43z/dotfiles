@@ -19,6 +19,7 @@ unsetopt rm_star_silent
 
 # exports
 export EDITOR=vim
+export TERM=xterm-256color
 export PATH=$PATH:~/projects/go/bin
 export PATH=$PATH:~/bin:/sbin:/usr/sbin
 export GOPATH=~/projects/go
@@ -27,7 +28,8 @@ export MANPAGER='/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft
 
 # aliases
 ## misc
-alias vim=vim
+alias p='python'
+alias json='python -m json.tool'
 alias zshrc='vim ~/.zshrc'
 alias ls='ls -th --color'
 alias df='df -h'
@@ -88,7 +90,6 @@ alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %
 alias gdl='git diff "HEAD^" HEAD'
 ## tmux
 alias tmuxconf='vim ~/.tmux.conf'
-alias tmux='TERM=screen-256color-bce tmux'
 alias tl='tmux list-sessions'
 alias ta='tmux attach -t'
 alias ts='tmux switch -t'

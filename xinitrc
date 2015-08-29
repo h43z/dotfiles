@@ -23,7 +23,6 @@ esac
 redshift -l 47:12 -r -t 6500:4500 &
 nitrogen --restore &
 xscreensaver -no-splash &
-#thunar --daemon &
 urxvtd -q -o -f &
 
 wm=${1:-i3}

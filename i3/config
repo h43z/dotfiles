@@ -120,7 +120,3 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Session startup
-
-# window placment
-for_window [class="Thunar"] floating enable

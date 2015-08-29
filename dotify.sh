@@ -2,11 +2,11 @@ while read server
 do
   ssh -t $server /bin/bash << EOF
     if [ -d dotfiles ] ; then
-      git pull
+      cd dotfiles && git pull
     else
-      git clone https://github.com/h43z/dotfiles
+      git clone https://github.com/h43z/dotfiles && cd dotfiles
     fi
-    cd dotfiles && ./setupserver.sh
+    ./setupserver.sh
 EOF
 done < /dev/stdin
 
