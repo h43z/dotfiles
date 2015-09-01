@@ -19,7 +19,7 @@ unsetopt rm_star_silent
 
 # exports
 export EDITOR=vim
-export TERM=xterm-256color
+export TERM=rxvt-unicode-256color
 export PATH=$PATH:~/projects/go/bin
 export PATH=$PATH:~/bin:/sbin:/usr/sbin
 export GOPATH=~/projects/go
