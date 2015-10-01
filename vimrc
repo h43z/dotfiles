@@ -16,6 +16,7 @@ Plug 'dietsche/vim-lastplace' "Reopen files where left off
 Plug 'rking/ag.vim' "ag interface
 "Plug 'inside/vim-search-pulse' "pulse search match
 Plug 'elzr/vim-json'
+Plug 'chriskempson/base16-vim'
 runtime! ftplugin/man.vim
 
 call plug#end()
@@ -127,7 +128,6 @@ set tags+=tags
 set foldmethod=syntax
 set foldlevel=99
 set timeoutlen=330
-set mouse=a
 
 "Autocmds
 ""reload vimrc on save

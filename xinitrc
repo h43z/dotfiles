@@ -4,6 +4,8 @@ eval $(ssh-agent)
 xset r rate 200 60
 xset mouse 0 0
 xset b off
+xset s off
+
 
 if egrep -iq 'touchpad' /proc/bus/input/devices; then
     synclient VertEdgeScroll=1 &
@@ -21,13 +23,13 @@ case $setup in
 esac
 
 redshift -l 47:12 -r -t 6500:4500 &
-nitrogen --restore &
+feh --bg-fill ~/images/wallpapers/mountains.png &
 #xscreensaver -no-splash &
 urxvtd -q -o -f &
 
 wm=${1:-i3}
 case $wm in
   openbox) exec openbox-session;;
-  i3) exec i3;;
+  i3) exec i3 -V -d all >> ~/.i3/logfile;;
 esac
 

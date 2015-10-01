@@ -1,8 +1,6 @@
 HISTFILE=~/.histfile
 HISTSIZE=4000000
 SAVEHIST=4000000
-REPORTTIME=5
-TIMEFMT="$fg[blue]%E$reset_color real $fg[blue]%U$reset_color user $fg[blue]%S$reset_color system $fg[blue]%P$reset_color"
 
 setopt hist_ignore_dups
 setopt share_history
@@ -19,17 +17,19 @@ unsetopt rm_star_silent
 
 # exports
 export EDITOR=vim
-export TERM=rxvt-unicode-256color
-export PATH=$PATH:~/projects/go/bin
-export PATH=$PATH:~/bin:/sbin:/usr/sbin
-export GOPATH=~/projects/go
-
+export PATH=$PATH:/sbin/:/usr/sbin
+export BROWSER=google-chrome
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64/
 export MANPAGER='/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
 
 # aliases
 ## misc
+alias hdisp="~/.screenlayout/home.sh && feh --bg-fill ~/images/wallpapers/mount.png"
+alias sdisp="~/.screenlayout/solo.sh && feh --bg-fill ~/images/wallpapers/mount.png"
+alias wdisp="~/.screenlayout/work.sh && feh --bg-fill ~/images/wallpapers/mount.png"
 alias p='python'
-alias json='python -m json.tool'
+alias -g json='| python -m json.tool'
+alias -g gp='| grep -i'
 alias zshrc='vim ~/.zshrc'
 alias ls='ls -th --color'
 alias df='df -h'
@@ -42,9 +42,8 @@ alias publicip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias mkcd='_(){mkdir $1 && cd $1};_'
 alias trash='_(){mv $@ ~/tmp/trash/};_'
 alias soon='sleep 2 &&'
-alias adbinput='_(){msg="$@" && adb shell input text ${msg// /%s}};_'
-alias wtf='ping 8.8.8.8'
 alias omg='ping google.com'
+alias wtf='ping 8.8.8.8'
 alias re='sudo $(fc -ln -1)'
 alias watch='watch -d -c'
 alias j='jobs'
@@ -56,6 +55,8 @@ alias topcmd='history 0 | awk '\''{ cmd[$2]++; count++; } END { for(a in cmd)pri
 ## suffix
 alias -s jpg=viewnior
 alias -s png=viewnior
+alias -s gif=$BROWSER
+alias -s html=$BROWSER
 ## grep/ag
 alias grep='grep --color'
 alias grepc='grep -n -C 2'
@@ -68,15 +69,12 @@ alias di='docker images'
 alias dps='docker ps'
 alias dic='docker rmi $(docker images -a -f "dangling=true" -q)'
 alias dcc='docker rm $(docker ps -q --filter status=exited)'
-alias dins='docker inspect'
-alias dih='docker images | head'
 alias ds='docker ps | grep -v NAMES | awk "{ print \$NF }" | tr "\n" " " | xargs docker stats'
 ## git
 alias gnl='git notes list'
 alias gne='git notes edit'
 alias gc='git commit -v'
 alias gca='git commit -v --amend'
-alias gac='git commit -a -v'
 alias gco='git checkout'
 alias gb='git branch -avv'
 alias ga='git add'
@@ -96,7 +94,8 @@ alias ts='tmux switch -t'
 alias tn='tmux new -s'
 ## vim
 alias v='vim'
-alias vman='_(){$@ 2>&1 | vim - };_'
+alias sv='sudo -E vim'
+alias -g vman='2>&1 | vim -'
 alias vimrc='vim ~/.vimrc'
 ## apt
 alias install='sudo apt-get install'
@@ -121,26 +120,12 @@ bindkey -v
 bindkey -M vicmd v edit-command-line
 bindkey -M viins '^r' history-incremental-search-backward
 bindkey -M vicmd '^r' history-incremental-search-backward
+#
+bindkey -e
+bindkey '^w' forward-word
+bindkey '^b' backward-word
 
 zle_highlight=(isearch:fg=blue)
-
-# vi mode
-autoload edit-command-line; zle -N edit-command-line
-export KEYTIMEOUT=1
-vim_ins_mode="%%"
-vim_cmd_mode="%{$fg[yellow]%}% (vi)%{$reset_color%}"
-vim_mode=$vim_ins_mode
-
-function zle-keymap-select {
-  vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
-  zle reset-prompt
-}
-zle -N zle-keymap-select
-
-function zle-line-finish {
-  vim_mode=$vim_ins_mode
-}
-zle -N zle-line-finish
 
 # completion
 autoload -U compinit && compinit
@@ -151,14 +136,11 @@ zstyle ':completion:*' matcher-list '' \
   'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
   'r:[[:ascii:]]||[[:ascii:]]=** r:|=* m:{a-z\-}={A-Z\_}'
 
-
-
 if [ -x "$HOME/.zsh/git-prompt/dist/build/gitstatus/gitstatus" ]; then
   GIT_PROMPT_EXECUTABLE="haskell"
 else
   GIT_PROMPT_EXECUTABLE="python"
 fi
-
 
 ZSH_THEME_GIT_PROMPT_NOCACHE="0"
 source ~/.zsh/git-prompt/zshrc.sh
