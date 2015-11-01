@@ -24,9 +24,10 @@ export MANPAGER='/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft
 
 # aliases
 ## misc
-alias hdisp="~/.screenlayout/home.sh && feh --bg-fill ~/images/wallpapers/mount.png"
-alias sdisp="~/.screenlayout/solo.sh && feh --bg-fill ~/images/wallpapers/mount.png"
-alias wdisp="~/.screenlayout/work.sh && feh --bg-fill ~/images/wallpapers/mount.png"
+wp="~/images/wallpapers/flatmount.jpg"
+alias hdisp="~/.screenlayout/home.sh && feh --bg-fill $wp"
+alias sdisp="~/.screenlayout/solo.sh && feh --bg-fill $wp"
+alias wdisp="~/.screenlayout/work.sh && feh --bg-fill $wp"
 alias p='python'
 alias -g json='| python -m json.tool'
 alias -g gp='| grep -i'
@@ -135,6 +136,8 @@ zstyle ':completion:*' matcher-list '' \
   'm:{a-z\-}={A-Z\_}' \
   'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
   'r:[[:ascii:]]||[[:ascii:]]=** r:|=* m:{a-z\-}={A-Z\_}'
+
+zstyle ':completion:*' special-dirs true
 
 if [ -x "$HOME/.zsh/git-prompt/dist/build/gitstatus/gitstatus" ]; then
   GIT_PROMPT_EXECUTABLE="haskell"

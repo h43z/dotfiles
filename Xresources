@@ -36,10 +36,12 @@ URxvt.secondaryScroll: true
 URxvt.matcher.button: 1
 URxvt.letterSpace: -2
 URxvt.internalBorder: 8
-URxvt.font: xft:DejaVu Sans Mono for Powerline:size=15
+URxvt.font: xft:DejaVu Sans Mono for Powerline:size=13
 URxvt.scrollTtyOutput: false
 URxvt.scrollWithBuffer: true
 URxvt.scrollTtyKeypress: true
+URxvt.termName: rxvt-256color
+URxvt.urgentOnBell: True
 
 ! colorscheme gruvbox ------------------------------------------------------
  hard contrast: *background: #1d2021
@@ -74,7 +76,9 @@ URxvt.scrollTtyKeypress: true
 
 ! enable the extension (note that you must use an absolute path, no ~/...)
 urxvt*perl-lib: /home/rich/bin
-urxvt*perl-ext-common: vim-scrollback,font-size
+urxvt*perl-ext-common: vim-scrollback,font-size,clipboard
 URxvt.vim-scrollback: C-n
 URxvt.keysym.C-Up:     font-size:increase
 URxvt.keysym.C-Down:   font-size:decrease
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
