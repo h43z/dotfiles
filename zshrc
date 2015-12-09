@@ -25,6 +25,7 @@ export MANPAGER='/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft
 # aliases
 ## misc
 wp="~/images/wallpapers/flatmount.jpg"
+alias sues="sudo -Es"
 alias hdisp="~/.screenlayout/home.sh && feh --bg-fill $wp"
 alias sdisp="~/.screenlayout/solo.sh && feh --bg-fill $wp"
 alias wdisp="~/.screenlayout/work.sh && feh --bg-fill $wp"
@@ -160,3 +161,5 @@ RPROMPT='$ret'
 
 source ~/.zsh/syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

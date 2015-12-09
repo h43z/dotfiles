@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 sudo apt-get install -y vim-nox git zsh tmux
 git clone https://github.com/olivierverdier/zsh-git-prompt.git ~/.zsh/git-prompt
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/syntax-highlighting

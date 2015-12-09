@@ -12,11 +12,10 @@ Plug 'Raimondi/delimitMate' "auto delim closer
 Plug 'ctrlpvim/ctrlp.vim' "fuzzy finder
 Plug 'Valloric/MatchTagAlways', {'for': ['html']} "(html)tag matcher
 Plug 'dietsche/vim-lastplace' "Reopen files where left off
-"Plug 'henrik/vim-indexed-search' "show match indicator
+Plug 'henrik/vim-indexed-search' "show match indicator
 Plug 'rking/ag.vim' "ag interface
-"Plug 'inside/vim-search-pulse' "pulse search match
-Plug 'elzr/vim-json'
-Plug 'chriskempson/base16-vim'
+Plug 'kchmck/vim-coffee-script', {'for': ['coffee']}
+Plug 'chrisbra/csv.vim', {'for': ['csv']}
 runtime! ftplugin/man.vim
 
 call plug#end()
