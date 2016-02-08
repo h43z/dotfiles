@@ -1,8 +1,8 @@
 set $mod Mod4
 set $alt Mod1
 
-gaps inner 4
-gaps outer 4
+gaps inner 8
+gaps outer 8
 mouse_warping none
 
 font pango:Monospace 10
@@ -15,7 +15,8 @@ bindsym $alt+f exec --no-startup-id "thunar"
 
 hide_edge_borders none
 new_float pixel 2
-new_window pixel 2
+new_window pixel 3
+
 
 # change focus
 bindsym $mod+h focus left
@@ -35,15 +36,15 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-#bindsym $mod+Right split v
-#bindsym $mod+s split h
+bindsym $mod+v split v
+bindsym $mod+s split h
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+#bindsym $mod+s layout stacking
+#bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -83,6 +84,11 @@ bar {
   #status_command i3status --config /etc/i3status.conf
   status_command i3blocks -c ~/.i3/i3blocks.conf
 }
+
+client.focused #9fbc00 #9fbc00 #111111
+client.unfocused #444444 #444444 #315858
+client.focused_inactive #444444 #444444 #2c2c2f
+client.urgent #383a3b #383a3b #ee0000
 
 bindsym XF86AudioMute exec amixer set Master toggle && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ && pkill -RTMIN+1 i3blocks

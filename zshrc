@@ -10,6 +10,7 @@ setopt correct autocd
 setopt promptsubst
 setopt extended_glob
 setopt bang_hist
+setopt interactivecomments
 unsetopt rm_star_silent
 
 [ -f ~/.private.sh ] && source ~/.private.sh
@@ -19,16 +20,17 @@ unsetopt rm_star_silent
 export EDITOR=vim
 export PATH=$PATH:/sbin/:/usr/sbin
 export BROWSER=google-chrome
-export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64/
 export MANPAGER='/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
 
 # aliases
 ## misc
-wp="~/images/wallpapers/flatmount.jpg"
+alias n="networkctl"
+alias less="less -Xr"
+alias chrome="nohup google-chrome &> /dev/null & disown"
 alias sues="sudo -Es"
-alias hdisp="~/.screenlayout/home.sh && feh --bg-fill $wp"
-alias sdisp="~/.screenlayout/solo.sh && feh --bg-fill $wp"
-alias wdisp="~/.screenlayout/work.sh && feh --bg-fill $wp"
+alias hdisp="~/.screenlayout/home.sh"
+alias sdisp="~/.screenlayout/solo.sh"
+alias wdisp="~/.screenlayout/work.sh"
 alias p='python'
 alias -g json='| python -m json.tool'
 alias -g gp='| grep -i'
@@ -66,7 +68,6 @@ alias agc='ag -C 2'
 alias lookfor="grep -i -R -n --color"
 ## docker
 alias d='docker'
-alias container='docker run -it --rm mydebian'
 alias di='docker images'
 alias dps='docker ps'
 alias dic='docker rmi $(docker images -a -f "dangling=true" -q)'
@@ -100,7 +101,7 @@ alias sv='sudo -E vim'
 alias -g vman='2>&1 | vim -'
 alias vimrc='vim ~/.vimrc'
 ## apt
-alias install='sudo apt-get install'
+alias install='sudo apt-get install --no-install-recommends'
 alias upgrade='sudo apt update && apt list --upgradable && sudo apt upgrade'
 alias madison='apt-cache madison'
 alias policy='apt-cache policy'

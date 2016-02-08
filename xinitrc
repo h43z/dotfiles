@@ -24,14 +24,11 @@ case $setup in
 esac
 
 redshift -l 47:12 -r -t 6500:4500 &
-feh --bg-fill ~/images/wallpapers/flatmount.jpg &
-#xscreensaver -no-splash &
+feh --bg-fill ~/images/wallpapers/cloudsrise.jpg &
 urxvtd -q -o -f &
-#compton -CGb &
 
 wm=${1:-i3}
 case $wm in
-  openbox) exec openbox-session;;
   i3) exec i3 ;;#-V -d alul >> ~/.i3/logfile;;
 esac
 
