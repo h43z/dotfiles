@@ -8,37 +8,47 @@ setopt inc_append_history
 setopt extended_history
 setopt correct autocd
 setopt promptsubst
-setopt extended_glob
+setopt histignorespace
 setopt bang_hist
 setopt interactivecomments
 unsetopt rm_star_silent
+autoload -U url-quote-magic
+zle -N self-insert url-quote-magic
 
 [ -f ~/.private.sh ] && source ~/.private.sh
 [ -f ~/.vim/bundle/gruvbox/gruvbox_256palette.sh ] && source ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
 
 # exports
 export EDITOR=vim
-export PATH=$PATH:/sbin/:/usr/sbin
-export BROWSER=google-chrome
-export MANPAGER='/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
+export GOPATH=$HOME/projects/go
+export PATH=$PATH:/sbin/:/usr/sbin:~/bin:$GOPATH/bin
+export BROWSER=chromium
+export MANPAGER='/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist colorcolumn=0 norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
+export FZF_DEFAULT_OPTS='--exact'
+export JAVA_HOME=/opt/jdk1.8.0_77
+export ANDROID_HOME=/opt/android-sdk-linux
 
 # aliases
 ## misc
+alias http="python -m SimpleHTTPServer 8000"
+alias total="awk '{s+=\$1} END {print s}'"
+alias lock="sudo physlock -u rich"
 alias n="networkctl"
 alias less="less -Xr"
-alias chrome="nohup google-chrome &> /dev/null & disown"
+alias gchrome="nohup google-chrome &> /dev/null & disown"
 alias sues="sudo -Es"
-alias hdisp="~/.screenlayout/home.sh"
-alias sdisp="~/.screenlayout/solo.sh"
+alias hdisp="~/.screenlayout/home.sh && feh --bg-fill ~/media/images/wallpapers/cloudsrise.jpg"
+alias sdisp="~/.screenlayout/solo.sh && feh --bg-fill ~/media/images/wallpapers/cloudsrise.jpg"
 alias wdisp="~/.screenlayout/work.sh"
 alias p='python'
 alias -g json='| python -m json.tool'
+alias -g jqson='| jq "."'
 alias -g gp='| grep -i'
 alias zshrc='vim ~/.zshrc'
 alias ls='ls -th --color=auto'
-alias df='df -h'
-alias ll='ls -lth --color=auto'
-alias l='ll'
+alias df='df -hT'
+alias ll='ls -lath --color=auto'
+alias l='ls -lth --color=auto'
 alias cd..='cd ..'
 alias cd...='cd ../../'
 alias rz='source ~/.zshrc'
@@ -47,7 +57,7 @@ alias mkcd='_(){mkdir $1 && cd $1};_'
 alias soon='sleep 2 &&'
 alias omg='ping google.com'
 alias wtf='ping 8.8.8.8'
-alias re='sudo $(fc -ln -1)'
+alias re='sudo -E $(fc -ln -1)'
 alias watch='watch -d -c'
 alias j='jobs'
 alias todo='vim ~/.todo'
@@ -56,8 +66,8 @@ alias testscript='r=$RANDOM;echo "#!/bin/bash\n" > script_$r.sh && chmod +x scri
 alias topcmd='history 0 | awk '\''{ cmd[$2]++; count++; } END { for(a in cmd)printf "%d %0.1f%%  %s\n", cmd[a], cmd[a]/count*100, a}'\'' | sort -nr | head | nl -w1 | column -t'
 
 ## suffix
-alias -s jpg=viewnior
-alias -s png=viewnior
+alias -s jpg=feh
+alias -s png=feh
 alias -s gif=$BROWSER
 alias -s html=$BROWSER
 ## grep/ag
@@ -163,3 +173,9 @@ source ~/.zsh/syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+###-tns-completion-start-###
+if [ -f /home/rich/.tnsrc ]; then
+    source /home/rich/.tnsrc
+fi
+###-tns-completion-end-###

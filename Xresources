@@ -1,62 +1,31 @@
-! font settings --------------------------------------------------------------
-
-Xft.autohint: true
-Xft.antialias: true
-Xft.hinting: true
-Xft.hintstyle: hintslight
+Xft*autohint: true
+Xft*antialias: true
+Xft*hinting: true
+Xft*hintstyle: true
 Xft.dpi: 96
 Xft.rgba: rgb
 Xft.lcdfilter: lcddefault
 
-URxvt.saveLines: 10000
-URxvt.scrollBar: false
-URxvt.secondaryScroll: true
-URxvt.matcher.button: 1
-URxvt.letterSpace: -2
-URxvt.internalBorder: 8
-URxvt.font: xft:DejaVu Sans Mono for Powerline:size=13
-URxvt.scrollTtyOutput: false
-URxvt.scrollWithBuffer: true
-URxvt.scrollTtyKeypress: true
-URxvt.termName: rxvt-256color
-URxvt.urgentOnBell: True
+XTerm*faceName:DejaVu Sans Mono
+XTerm*faceSize:13
 
-! colorscheme gruvbox ------------------------------------------------------
- hard contrast: *background: #1d2021
+! colorscheme gruvbox
+hard contrast: *background: #1d2021
 *background: #282828
-! soft contrast: *background: #32302f
 *foreground: #ebdbb2
-! Black + DarkGrey
 *color0:  #282828
 *color8:  #928374
-! DarkRed + Red
 *color1:  #cc241d
 *color9:  #fb4934
-! DarkGreen + Green
 *color2:  #98971a
 *color10: #b8bb26
-! DarkYellow + Yellow
 *color3:  #d79921
 *color11: #fabd2f
-! DarkBlue + Blue
 *color4:  #458588
 *color12: #83a598
-! DarkMagenta + Magenta
 *color5:  #b16286
 *color13: #d3869b
-! DarkCyan + Cyan
 *color6:  #689d6a
 *color14: #8ec07c
-! LightGrey + White
 *color7:  #a89984
 *color15: #ebdbb2
-
-
-! enable the extension (note that you must use an absolute path, no ~/...)
-urxvt*perl-lib: /home/rich/bin
-urxvt*perl-ext-common: vim-scrollback,font-size,clipboard
-URxvt.vim-scrollback: C-n
-URxvt.keysym.C-Up:     font-size:increase
-URxvt.keysym.C-Down:   font-size:decrease
-URxvt.keysym.Shift-Control-C: perl:clipboard:copy
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste

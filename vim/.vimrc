@@ -12,13 +12,15 @@ Plug 'dietsche/vim-lastplace' "Reopen files where left off
 Plug 'henrik/vim-indexed-search' "show match indicator
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'avakhov/vim-yaml'
+Plug 'pangloss/vim-javascript'
 runtime! ftplugin/man.vim
 
 call plug#end()
 
 let mapleader=","
 colorscheme gruvbox
-let g:netrw_browsex_viewer= "google-chrome" "use gx to open url under cursor in browser
+let g:netrw_browsex_viewer= "chromium" "use gx to open url under cursor in browser
 
 ""vim-airline
 let g:airline#extensions#tabline#enabled = 1
@@ -36,7 +38,6 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 ""syntastic
 let g:syntastic_error_symbol = '✘'
 let g:syntastic_warning_symbol = "▲"
-let javaScript_fold=1
 ""toggle own synstastic error function
 nmap <leader>e :call ToggleErrors()<CR>
 
@@ -61,7 +62,9 @@ nmap <C-l> <C-W>l
 nmap <leader>q :bwipeout<CR>
 
 ""force close a buffer
-nmap <leader>x :bwipeout!<CR>
+nmap <leader>leaderx :bwipeout!<CR>
+
+nnoremap <C-p> :call fzf#run({'sink': 'e'})<CR>
 
 "command maps
 ""save file even if opened RO
@@ -97,6 +100,7 @@ set tags+=tags
 set foldmethod=syntax
 set foldlevel=99
 set timeoutlen=330
+set colorcolumn=80
 
 "Autocmds
 ""reload vimrc on save
@@ -129,4 +133,3 @@ endfunction
 function! JsonPrettify()
   execute "%!python -m json.tool"
 endfunction
-
