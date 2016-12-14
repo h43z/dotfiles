@@ -1,0 +1,19 @@
+set sort = threads
+set sort_aux = reverse-last-date-received
+set editor = "vim -c 'startinsert' -c 'set spell spelllang=de,en'"
+set sleep_time = 0
+set markers = no
+set wait_key= no
+set mark_old = no
+set reverse_alias = yes
+bind index gg first-entry
+bind index G last-entry
+bind pager k previous-line
+bind pager j next-line
+bind pager gg top
+bind pager G bottom
+source ~/.mutt/private
+auto_view text/calendar text/html application/pdf
+alternative_order text/plain 
+ignore *
+unignore from date subject to cc

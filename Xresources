@@ -1,13 +1,22 @@
-Xft*autohint: true
-Xft*antialias: true
-Xft*hinting: true
-Xft*hintstyle: true
-Xft.dpi: 96
-Xft.rgba: rgb
-Xft.lcdfilter: lcddefault
+!Xft*autohint: false
+!Xft*antialias: false
+!Xft*hinting: false
+!Xft*hintstyle: false
+!! Xft*dpi: 96
+!Xft*rgba: rgb
+!! Xft*lcdfilter: lcddefault
 
-XTerm*faceName:DejaVu Sans Mono
+XTerm*faceName:xft:DejaVu Sans Mono
 XTerm*faceSize:13
+XTerm*jumpScroll:true 
+XTerm*multiScroll:true
+XTerm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+XTerm*termName:  xterm-256color
+
+
+URxvt.letterSpace: -2
+URxvt.font:xft:DejaVu Sans Mono:size=13
+URxvt.scrollBar: false
 
 ! colorscheme gruvbox
 hard contrast: *background: #1d2021

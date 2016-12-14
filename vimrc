@@ -1,0 +1,19 @@
+syntax on
+filetype plugin on 
+set nocompatible
+set noswapfile
+set laststatus=2
+set wildmenu
+set incsearch
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set showmatch
+set hlsearch
+set undofile
+set undodir=~/.vim/undodir
+set number
+set autoread
+set noerrorbells
+set novisualbell
+set colorcolumn=80
