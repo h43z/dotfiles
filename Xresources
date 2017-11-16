@@ -6,6 +6,8 @@
 !Xft*rgba: rgb
 !! Xft*lcdfilter: lcddefault
 
+!Xft.dpi: 96
+
 XTerm*faceName:xft:DejaVu Sans Mono
 XTerm*faceSize:13
 XTerm*jumpScroll:true 
@@ -17,6 +19,9 @@ XTerm*termName:  xterm-256color
 URxvt.letterSpace: -2
 URxvt.font:xft:DejaVu Sans Mono:size=13
 URxvt.scrollBar: false
+URxvt.saveLines: 30000
+!URxvt.visualBell:  true
+URxvt.urgentOnBell:  true
 
 ! colorscheme gruvbox
 hard contrast: *background: #1d2021
@@ -38,3 +43,9 @@ hard contrast: *background: #1d2021
 *color14: #8ec07c
 *color7:  #a89984
 *color15: #ebdbb2
+
+URxvt.perl-ext-common: ...,font-size
+URxvt.keysym.C-Up:     perl:font-size:increase
+URxvt.keysym.C-Down:   perl:font-size:decrease
+URxvt.keysym.C-S-Up:   perl:font-size:incglobal
+URxvt.keysym.C-S-Down: perl:font-size:decglobal
