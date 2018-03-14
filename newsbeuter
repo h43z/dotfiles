@@ -1,6 +1,0 @@
-confirm-exit no
-bind-key k up
-bind-key j down
-article-sort-order date-asc
-feedlist-format "%S%n %11u %t"
-articlelist-format "%D %f %?T?; ?%t"

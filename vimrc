@@ -7,10 +7,10 @@ set noswapfile
 set laststatus=2
 set wildmenu
 set incsearch
-set expandtab
 set shiftwidth=2
 set tabstop=2 
 set softtabstop=2 
+set expandtab
 set showmatch
 set showcmd
 set hlsearch
@@ -23,7 +23,7 @@ set autoindent
 set belloff=all
 set novisualbell
 set colorcolumn=80
-set clipboard=unnamed
+set clipboard=unnamedplus
 highlight ColorColumn ctermbg=7
 set history=10000
 set ignorecase
@@ -32,7 +32,9 @@ set mouse=a
 set backspace=indent,eol,start
 packadd! matchit
 
-" Search in all currently opened buffers
+autocmd VimResized * wincmd =
+
+" grep for string in all buffers
 function! s:GrepOpenBuffers(search)
     call setqflist([])
     let currBuff=bufnr("%")
