@@ -1,6 +1,6 @@
-if !exists("g:syntax_on")
-  syntax enable
-endif
+"if !exists("g:syntax_on")
+"  syntax enable
+"endif
 filetype plugin indent on 
 set nocompatible
 set noswapfile
@@ -23,27 +23,31 @@ set autoindent
 set belloff=all
 set novisualbell
 set colorcolumn=80
-set clipboard=unnamedplus
+set clipboard=unnamed
 highlight ColorColumn ctermbg=7
 set history=10000
 set ignorecase
 set smartcase
 set mouse=a
 set backspace=indent,eol,start
+set background=dark
 packadd! matchit
 
 autocmd VimResized * wincmd =
+" vue -vim
+autocmd FileType vue syntax sync fromstart
 
 " grep for string in all buffers
 function! s:GrepOpenBuffers(search)
-    call setqflist([])
-    let currBuff=bufnr("%")
-    let l:winview = winsaveview()
-    silent! exe 'bufdo vimgrepadd /' . a:search . '/ %'
-    let matches = len(getqflist())
-    execute 'buffer ' . currBuff
-    call winrestview(l:winview)
-    cw
+  call setqflist([])
+  let currBuff=bufnr("%")
+  let l:winview = winsaveview()
+  silent! exe 'bufdo vimgrepadd /' . a:search . '/ %'
+  let matches = len(getqflist())
+  execute 'buffer ' . currBuff
+  call winrestview(l:winview)
+  cw
 endfunction
 com! -nargs=1 BufGrep call <SID>GrepOpenBuffers('<args>')
+
 

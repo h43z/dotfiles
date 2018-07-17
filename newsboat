@@ -3,3 +3,4 @@ bind-key j down
 download-full-page yes
 reload-threads 8
 browser "chromium %u >/dev/null"
+feed-sort-order unreadarticlecount-asc
