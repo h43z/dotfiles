@@ -17,3 +17,4 @@ auto_view text/calendar text/html application/pdf
 alternative_order text/plain 
 ignore *
 unignore from date subject to cc
+#set index_format="%4C %Z %-10.10@reldate@ %-15.15L (%?l?%4l&%4c?) %s"
