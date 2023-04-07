@@ -10,6 +10,7 @@ bind index G last-entry
 bind pager G bottom
 bind pager k previous-line
 bind pager j next-line
+bind attach <return> view-mailcap
 
 macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
 source ~/.mutt/private
