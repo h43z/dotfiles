@@ -44,15 +44,15 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 export BROWSER=firefox
 
-export GOPATH=/home/rich/projects/go
+export GOPATH=$HOME/projects/go
 
 export ANDROID_HOME=/opt/android-sdk-linux
 export ANDROID_SDK_ROOT=/opt/android-sdk-linux
 
 export PATH="${PATH}:${ANDROID_HOME}/tools"
 export PATH="${PATH}:${ANDROID_HOME}/platform-tools"
-export PATH="${PATH}:~/bin"
-export PATH="${PATH}:~/.local/bin"
+export PATH="${PATH}:$HOME/bin"
+export PATH="${PATH}:$HOME/.local/bin"
 export PATH="${PATH}:${GOPATH}/bin"
 
 export DENO_INSTALL="$HOME/.deno"
@@ -60,3 +60,6 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# bun completions
+[ -s "/home/rich/.bun/_bun" ] && source "/home/rich/.bun/_bun"

@@ -33,6 +33,7 @@ set mouse=a
 set backspace=indent,eol,start
 set background=dark
 set list listchars=tab:»·,trail:·
+set nofixendofline
 packadd! matchit
 
 let netrw_browsex_viewer='xdg-open'
@@ -57,3 +58,9 @@ command! -nargs=1 BufGrep call <SID>GrepOpenBuffers('<args>')
 
 " count number of matches
 map ,* *<C-O>:%s///gn<CR>
+
+function! Vtip()
+  echomsg system('curl -s -m 3 https://vtip.43z.one')
+endfunction
+
+noremap ,v :call Vtip()<CR>
