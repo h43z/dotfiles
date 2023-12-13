@@ -7,11 +7,13 @@ xset s off
 xset -dpms
 xsetroot -solid "#666"
 xrandr --dpi 140
+
+# stop scrolling when fingers lifted from touchpad
 synclient CoastingSpeed=0
-redshift -l 47:12 -r -t 6500:4500 -b 1:0.7 &
-clipmenud &
-autocutsel &
-autocutsel -s PRIMARY &
+# enable tapping
+xinput set-prop "Synaptics TM3053-006" 318 3
+# disable touchpad when keyboard is used
 syndaemon -t -i 0.8 -d &
+
 export $(dbus-launch)
 exec i3
