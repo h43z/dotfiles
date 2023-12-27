@@ -1,13 +1,15 @@
+urls-source "miniflux"
+miniflux-url "https://miniflux.43z.one"
+miniflux-login "admin"
+miniflux-passwordfile "~/.newsboat/miniflux-pw.txt"
+
 error-log "~/.newsboat/error.log"
 ignore-mode "display"
-#ignore-article "https://h.43z.one/feed/hackerone.xml" "title =~ \"0 USD\""
-ignore-article "https://julian.digital/feed/" "title =~ \"Inventory Update\""
-ignore-article "https://julian.digital/feed/" "title =~ \"Media Consumption\""
-ignore-article "https://drewdevault.com/feed.xml" "title =~ \"Status update\""
 bind-key k up
 bind-key j down
-download-full-page yes
-reload-threads 8
+#download-full-page yes
+#download-timeout 3
+reload-threads 10
 feed-sort-order unreadarticlecount-asc
 cleanup-on-quit no
-prepopulate-query-feeds yes
+#prepopulate-query-feeds yes

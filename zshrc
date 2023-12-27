@@ -18,7 +18,7 @@ bindkey -v
 bindkey '^R' history-incremental-search-backward
 
 PROMPT="%n@$HOST:%~ "$'\n'"%# "
-alias -g V='| vim -'
+alias -g V='2>&1 | vim -'
 alias -g G='| grep -i'
 alias svim='sudo -Es vim'
 alias cdtmp='cd $(mktemp -d)'
@@ -36,6 +36,7 @@ alias m='mutt -n'
 alias ls='ls --color=auto'
 alias l='ls -lh --color=auto'
 alias ag='ag --ignore-dir node_modules'
+alias b="printf '\033[?11i'; vim -c \"set bt=nofile\" -c $ -c \":call search('\S', 'bW')|normal! kdG\" /tmp/scrollback;rm /tmp/scrollback"
 
 export KEYTIMEOUT=1
 export LANG="en_US.UTF-8"

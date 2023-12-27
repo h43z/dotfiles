@@ -10,6 +10,9 @@ XTerm*metaSendsEscape: true
 XTerm*bellIsUrgent: true
 !XTerm*selectToClipboard: true
 !XTerm*ptyInitialErase: true
+XTerm*printAttributes: 0
+Xterm*printerExtent: true
+XTerm*printerCommand: cat > /tmp/scrollback
 
 ! colorscheme gruvbox
 hard contrast: *background: #1d2021
