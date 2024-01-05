@@ -61,6 +61,3 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
-# bun completions
-#[ -s "/home/rich/.bun/_bun" ] && source "/home/rich/.bun/_bun"

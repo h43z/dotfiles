@@ -1,6 +1,6 @@
 XTerm*faceName:DejaVu Sans Mono
 XTerm*faceSize:14
-!XTerm*font: -Misc-Fixed-Medium-R-Normal--20-200-75-75-C-100-ISO10646-1
+XTerm*font: -Misc-Fixed-Medium-R-Normal--20-200-75-75-C-100-ISO10646-1
 XTerm*jumpScroll:true 
 XTerm*allowFontOps:true 
 XTerm*multiScroll:true
@@ -8,11 +8,16 @@ XTerm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
 XTerm*termName:  xterm-256color
 XTerm*metaSendsEscape: true
 XTerm*bellIsUrgent: true
-!XTerm*selectToClipboard: true
-!XTerm*ptyInitialErase: true
 XTerm*printAttributes: 0
-Xterm*printerExtent: true
+XTerm*printerExtent: true
 XTerm*printerCommand: cat > /tmp/scrollback
+
+
+XTerm.vt100.translations: #override \n\
+  Ctrl <Key> minus: smaller-vt-font() \n\
+  Ctrl <Key> plus: larger-vt-font() \n\
+  Ctrl Shift <Key>k: scroll-back(1, line) \n\
+  Ctrl Shift <Key>j: scroll-forw(1, line)
 
 ! colorscheme gruvbox
 hard contrast: *background: #1d2021
