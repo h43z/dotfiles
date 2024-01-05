@@ -1,8 +1,8 @@
 XTerm*faceName:DejaVu Sans Mono
 XTerm*faceSize:14
 XTerm*font: -Misc-Fixed-Medium-R-Normal--20-200-75-75-C-100-ISO10646-1
-XTerm*jumpScroll:true 
-XTerm*allowFontOps:true 
+XTerm*jumpScroll:true
+XTerm*allowFontOps:true
 XTerm*multiScroll:true
 XTerm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
 XTerm*termName:  xterm-256color
@@ -11,7 +11,6 @@ XTerm*bellIsUrgent: true
 XTerm*printAttributes: 0
 XTerm*printerExtent: true
 XTerm*printerCommand: cat > /tmp/scrollback
-
 
 XTerm.vt100.translations: #override \n\
   Ctrl <Key> minus: smaller-vt-font() \n\
